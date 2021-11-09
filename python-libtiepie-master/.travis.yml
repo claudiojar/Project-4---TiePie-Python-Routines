@@ -1,0 +1,23 @@
+dist: xenial
+language: python
+python:
+- '3.4'
+- '3.5'
+- '3.6'
+- '3.7'
+- '3.8'
+- '3.9'
+before_install:
+- pip install pycodestyle
+script:
+- pycodestyle --ignore=E501 .
+- python setup.py install
+- python setup.py sdist
+deploy:
+  provider: pypi
+  user: __token__
+  password:
+    secure: dw5C3cBRp/mkFLPfqr4FxqVvNErRrXIF1l9Q8R1aiQWNz7FmfgWocgnYBlK9mHOb0wlltjHI6Rc1WnGXJyUT24bjZB4+q6k0cFjYtuBTTQIFYiQJLMKolOp6MrKEcHVtuC1byFxe57wXUlPUGN2ZPqOXXbmPYBBxHQNivAnVRKMluITYYVMIvSI4oNDzfYDWjTR4MaOfBqOmGddT7AQmpF+bn8k/oTutGMBRq5YiC7an2xydUZZqelovUnuLGi0GvrWz4qUSjcT4pKFDNtGm3fONKMk/1vntqo0QJjEMWjWTpnjpXbKUZYdgi0LnpBLLEqZ48pu2bAElzOB05P0Jb0du0w6zAizhMzbgdLALh3kGi2O0JfxxZoXE1vXbSn2don++/LhB9z6xwkVySxGC+kPbOZZNVH3e/vLQnlh8C9E23dNSVHTjL47kbI7ienZx4J2KhobCIJFhcu780lS4WGXgHo6SzjeSKe8mqyqmxKmMNWMtp7LvBo4uCOMX74X8TO+YYB2xaOudULV0gJHBnLJ5Hk0pb41ecVJbOXOHjWo4tupxZnmRUGXzyFHUXIxMckYt7+ZdTJ5sX24KUlc2Vtu6aEWeg8gWv0gYotW6HFd9jt3Pc44pctDEeyenVL7+Nw2e7yRNvzpcjBzf2fOdZ7tPeP0yiFYYYHbsw3tbdUY=
+  on:
+    tags: true
+    python: '3.9'
