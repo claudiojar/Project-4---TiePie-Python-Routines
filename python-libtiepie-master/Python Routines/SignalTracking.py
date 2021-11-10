@@ -12,13 +12,24 @@ import time
 import os
 import sys
 import libtiepie
+from numpy.core.fromnumeric import shape
 from printinfo import*
+
+import numpy as np
+import MiraexLib.plot
+
+
+# %% Functions
+def myFunc():
+    print('Function')
+
 
 #%% Parameters
 myName = 'DM-0001_afterUV_drift' # Saving name
 myTime = 1 # pause time to add between measurements (5.5 s min)  [s]
 myRange = 4 # range in V (CAREFUL think about changing it !!!!)
 
+nb_of_chunks = 2
 
 #%%
 
@@ -91,7 +102,7 @@ if scp:
 
             # Measure 10 chunks:
             sample = 0
-            for chunk in range(10):
+            for chunk in range(nb_of_chunks):
                 # Print a message, to inform the user that we still do something:
                 print('Data chunk ' + str(chunk + 1))
 
@@ -134,5 +145,15 @@ else:
     print('No oscilloscope available with stream measurement support!')
     sys.exit(1)
 
-sys.exit(0)
+# %% Data processing
+
+data_np = np.array(data)
+
+MiraexLib.plot.GenericPlot(np.linspace(0,1,len(data_np[0])),data_np[0],
+                           'xlabel', 'ylabel', 'title', 'legend')
+
+
+
+
+#sys.exit(0)
 
