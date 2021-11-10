@@ -12,13 +12,13 @@ import time
 import os
 import sys
 import libtiepie
-#from examples.printinfo import *
+from python_libtiepie_master.examples.printinfo import *
 
 
 #%% Parameters
-name = 'DM-0001_afterUV_drift' # Saving name
-time = 1 # pause time to add between measurements (5.5 s min)  [s]
-range = 4 # range in V (CAREFUL think about changing it !!!!)
+myName = 'DM-0001_afterUV_drift' # Saving name
+myTime = 1 # pause time to add between measurements (5.5 s min)  [s]
+myRange = 4 # range in V (CAREFUL think about changing it !!!!)
 
 
 #%%
@@ -32,7 +32,7 @@ timeline = []
 #%% Data acquisition
 
 # Print library info:
-#print_library_info()
+print_library_info()
 
 # Enable network search:
 libtiepie.network.auto_detect_enabled = True
@@ -78,8 +78,12 @@ if scp:
         # Start measurement:
         scp.start()
 
-        csv_file = open('OscilloscopeStream.csv', 'w')
+        csv_file = open(myName+'.csv', 'w')
+
         try:
+
+            print('try')
+
             # Write csv header:
             csv_file.write('Sample')
             for i in range(len(scp.channels)):
@@ -87,7 +91,6 @@ if scp:
             csv_file.write(os.linesep)
 
             # Measure 10 chunks:
-            print()
             sample = 0
             for chunk in range(10):
                 # Print a message, to inform the user that we still do something:
@@ -122,7 +125,7 @@ if scp:
         scp.stop()
 
     except Exception as e:
-        #print('Exception: ' + e.message)
+        print('Exception')
         sys.exit(1)
 
     # Close oscilloscope:
