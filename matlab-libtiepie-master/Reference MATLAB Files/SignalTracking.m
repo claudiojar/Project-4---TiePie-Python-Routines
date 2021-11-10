@@ -1,7 +1,7 @@
 % OscilloscopeStream.m
 close all
 clear all
-tic
+%tic
 
 %% Parameters
 name = 'DM-0001_afterUV_drift'; % Saving name
