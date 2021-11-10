@@ -7,9 +7,7 @@ def ShowPlots():
 
         plt.show()
 
-def GenericPlot(self, xData: list, yData: list,
-                    xlabel: str, ylabel: str, title: str,
-                    mylegend : list):
+def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, mylegend : list):
         """
         Function to generate a generic plot using MatplotLib.
         """

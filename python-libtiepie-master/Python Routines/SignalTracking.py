@@ -152,7 +152,7 @@ data_np = np.array(data)
 MiraexLib.plot.GenericPlot(np.linspace(0,1,len(data_np[0])),data_np[0],
                            'xlabel', 'ylabel', 'title', 'legend')
 
-
+MiraexLib.plot.ShowPlots()
 
 
 #sys.exit(0)
