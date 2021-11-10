@@ -12,8 +12,7 @@ import time
 import os
 import sys
 import libtiepie
-from python_libtiepie_master.examples.printinfo import *
-
+from printinfo import*
 
 #%% Parameters
 myName = 'DM-0001_afterUV_drift' # Saving name
