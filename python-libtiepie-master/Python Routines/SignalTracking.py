@@ -77,7 +77,7 @@ if scp:
             ch.enabled = True
 
             # Set range:
-            ch.range = 8  # 8 V
+            ch.range = myRange  # in Volts
 
             # Set coupling:
             ch.coupling = libtiepie.CK_DCV  # DC Volt
@@ -100,7 +100,7 @@ if scp:
                 csv_file.write(';Ch' + str(i + 1))
             csv_file.write(os.linesep)
 
-            # Measure 10 chunks:
+            # Measure nb_of_chunks chunks:
             sample = 0
             for chunk in range(nb_of_chunks):
                 # Print a message, to inform the user that we still do something:
