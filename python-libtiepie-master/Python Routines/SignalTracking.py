@@ -24,7 +24,7 @@ def myFunc():
     print('Function')
 
 
-# %% Parameters
+# %% Parameters to be set by user
 myName = 'DM-0001_afterUV_drift'  # Saving name
 myTime = 1  # pause time to add between measurements (5.5 s min)  [s]
 myRange = 4  # range in V (CAREFUL think about changing it !!!!)
