@@ -16,7 +16,7 @@ from numpy.core.fromnumeric import shape
 from printinfo import*
 
 import numpy as np
-import MiraexLib.plot
+import MiraexLib.plot as miraex_plt
 
 
 # %% Functions
@@ -24,22 +24,22 @@ def myFunc():
     print('Function')
 
 
-#%% Parameters
-myName = 'DM-0001_afterUV_drift' # Saving name
-myTime = 1 # pause time to add between measurements (5.5 s min)  [s]
-myRange = 4 # range in V (CAREFUL think about changing it !!!!)
+# %% Parameters
+myName = 'DM-0001_afterUV_drift'  # Saving name
+myTime = 1  # pause time to add between measurements (5.5 s min)  [s]
+myRange = 4  # range in V (CAREFUL think about changing it !!!!)
 
-nb_of_chunks = 2
+nb_of_chunks = 5
 
-#%%
+# %%
 
-MeanKulite=[]
-DC2=[]
-DC1=[]
+MeanKulite = []
+DC2 = []
+DC1 = []
 
 timeline = []
 
-#%% Data acquisition
+# %% Data acquisition
 
 # Print library info:
 print_library_info()
@@ -83,7 +83,7 @@ if scp:
             ch.coupling = libtiepie.CK_DCV  # DC Volt
 
         # Print oscilloscope info:
-        #print_device_info(scp)
+        print_device_info(scp)
 
         # Start measurement:
         scp.start()
@@ -117,6 +117,17 @@ if scp:
                 # Get data:
                 data = scp.get_data()
 
+                """
+                BEGIN DYNAMIC PLOT
+                """
+                print('hello')
+                x_data = np.linspace(0, 1, len(data[0]))
+                y_data = data[0]
+                miraex_plt.DynamicPlot2(x_data, y_data, 'xlabel', 'ylabel', 'title')
+                """
+                END DYNAMIC PLOT
+                """
+
                 # Output CSV data:
                 for i in range(len(data[0])):
                     csv_file.write(str(sample + i))
@@ -145,15 +156,14 @@ else:
     print('No oscilloscope available with stream measurement support!')
     sys.exit(1)
 
-# %% Data processing
+# %% Data processing and plotting
 
 data_np = np.array(data)
 
-MiraexLib.plot.GenericPlot(np.linspace(0,1,len(data_np[0])),data_np[0],
-                           'xlabel', 'ylabel', 'title', 'legend')
+miraex_plt.GenericPlot(np.linspace(0, 1, len(data_np[0])), data_np[0],
+                       'Time', 'Voltage', 'TITLE', 'myLegend')
 
-MiraexLib.plot.ShowPlots()
+miraex_plt.ShowPlots()
 
 
-#sys.exit(0)
-
+# sys.exit(0)
