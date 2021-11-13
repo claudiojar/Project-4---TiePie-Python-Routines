@@ -13,10 +13,10 @@ import os
 import sys
 import libtiepie
 from numpy.core.fromnumeric import shape
-from printinfo import*
 
 import numpy as np
 import MiraexLib.plot as miraex_plt
+from MiraexLib.printinfo import*
 
 
 # %% Functions

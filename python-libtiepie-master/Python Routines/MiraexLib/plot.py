@@ -66,7 +66,7 @@ def DynamicPlot(x_data, y_data):
 def DynamicPlot2(x_data, y_data, x_label: str, y_label: str, title: str):
 
     plt.suptitle(f'{title}', weight="bold", size='x-large')
-    plt.grid(which='both')
+    #plt.grid(which='both')
     plt.xlabel(x_label)
     plt.ylabel(y_label)
 
