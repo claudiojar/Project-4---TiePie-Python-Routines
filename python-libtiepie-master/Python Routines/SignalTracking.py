@@ -123,7 +123,8 @@ if scp:
                 print('hello')
                 x_data = np.linspace(0, 1, len(data[0]))
                 y_data = data[0]
-                miraex_plt.DynamicPlot2(x_data, y_data, 'xlabel', 'ylabel', 'title')
+                miraex_plt.DynamicPlot2(
+                    x_data, y_data, 'xlabel', 'ylabel', 'title')
                 """
                 END DYNAMIC PLOT
                 """
@@ -163,6 +164,8 @@ data_np = np.array(data)
 miraex_plt.GenericPlot(np.linspace(0, 1, len(data_np[0])), data_np[0],
                        'Time', 'Voltage', 'TITLE', 'myLegend')
 
+
+# Keep the ShowPlots command at the end of the script !!!!!!
 miraex_plt.ShowPlots()
 
 
