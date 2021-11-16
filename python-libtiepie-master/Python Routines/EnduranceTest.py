@@ -178,16 +178,19 @@ while duration < TestDuration:
     print(f'{np_data = }, {np_data.shape = }')
 
     # average value of the data fetched during 1 loop per channel
+    # len(np_data) = nb of channels of the scope
     average_list.append([np.mean(np_data[i]) for i in range(len(np_data))])
 
     # Substract the mean of np_data to each element of np_data during 1 loop
     '''
-    Processed data will have n number of elements, each has 2 sub-dimensions that represent the 2 channels that we are working with in the oscilloscope.
+    Processed data will have n number of elements, each has nb_of_channels sub-dimensions that represent the nb of channels that we are working with in the oscilloscope.
+
     The number of elements n is the number of iterations of the loop. It increases as the test time increases.
     '''
 
-    # By substracting the mean we remove the offset
+    # By substracting the mean we remove the DC offset
     processed_data.append(np_data - np.mean(np_data))
+    print(np.array(processed_data).shape)
 
     # Get all channel data value ranges (which are compensated for probe gain/offset)
     data_range_min_max = []
