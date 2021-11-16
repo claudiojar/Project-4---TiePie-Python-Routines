@@ -85,6 +85,7 @@ if gen:
 # %% Open scope and perform test
 
 duration = 0
+counter = 0
 
 # creation of empty lists that will be modified in the loop
 average_list = []
@@ -141,7 +142,7 @@ while duration < TestDuration:
                 ch.trigger.enabled = False
 
             '''
-            REMOVE COMMENTS FOR HS3
+            REMOVE COMMENT FOR HS3
 
             # Locate trigger input:
             # or TIID_GENERATOR_START or TIID_GENERATOR_STOP
@@ -173,13 +174,26 @@ while duration < TestDuration:
 
     # Data processing
 
-    #print(f'{data = }')
+    # print(f'{data = }')
+    # np_data will be rewritten at every loop iteration
+    # np_data[nb of channels of the scope][nb of samples in channel]
+
     np_data = np.array(data)  # numpy array
-    print(f'{np_data = }, {np_data.shape = }')
+    print(f'{np_data.shape = }')
+
+    np_data = np.array([[1, 1, 3, 3, 3],
+                        [2, 2, 2, 2, 2],
+                        [3, 3, 3, 3, 3],
+                        [4, 4, 4, 4, 4]])
+
+    print(f'{np_data.shape = }')
+    print(np_data[0])
 
     # average value of the data fetched during 1 loop per channel
-    # len(np_data) = nb of channels of the scope
-    average_list.append([np.mean(np_data[i]) for i in range(len(np_data))])
+    # The first index is the iteration index
+    # The second index is the avg for channel index
+    average_list.append([np.mean(np_data[0])])
+    print(f'{average_list = }')
 
     # Substract the mean of np_data to each element of np_data during 1 loop
     '''
@@ -187,10 +201,9 @@ while duration < TestDuration:
 
     The number of elements n is the number of iterations of the loop. It increases as the test time increases.
     '''
-
     # By substracting the mean we remove the DC offset
     processed_data.append(np_data - np.mean(np_data))
-    print(np.array(processed_data).shape)
+    print('processed data shape = ', np.array(processed_data).shape)
 
     # Get all channel data value ranges (which are compensated for probe gain/offset)
     data_range_min_max = []
@@ -218,14 +231,16 @@ while duration < TestDuration:
     '''
     Here we diverge from the ref. MATLAB file. We will compute the RMS value of the channels 1 and 2 overone acquisition period and write it to a JSON file. We will also plot the RMS values of channels 1 and 2 over that acquisition in order to verify the intergrity of the data and then we simply dump the plot.
     '''
-    # RMS of the data fetched in 1 loop iteration
-    AmpRMS = np.sqrt(np.mean((np.array(processed_data))**2))
+    # RMS of the data fetched in 1 loop iteration, for each channel
+    AmpRMS = [np.sqrt(np.mean((np.array(processed_data[i]))**2))
+              for i in range(len(processed_data))]
 
     print(f'{AmpRMS = }')
 
     # Create a vector with all the RMS values of all loops, updates each loop
     Vect_AmpRMS.append(AmpRMS)
     Vect_AmpRMS_np = np.array(Vect_AmpRMS)
+    print(f'{Vect_AmpRMS_np.shape = }')
 
     # duration before plotting, might be inaccurate to IRL !!!
     duration = time.time() - my_time  # secs
@@ -236,14 +251,18 @@ while duration < TestDuration:
     print(f'{(Vect_Duration) = }')
     print(f'{(Vect_AmpRMS_np) = }')
 
+    counter += 1
+    print(f'{counter = }')
     # Plotting
     """Dynamic plotting every iteration of the while loop"""
-    miraex_plt.DynamicPlot2(Vect_Duration, (Vect_AmpRMS_np*1000),
+    # for i in range(len())
+
+    miraex_plt.DynamicPlot2(Vect_Duration, (Vect_AmpRMS_np[0]*1000),
                             'Duration [s]', 'RMS (x1000)', 'Dynamic Endurance Test')
 
 print('--------------------------')
 '''
-REMOVE COMMENTS FOR HS3
+REMOVE COMMENT FOR HS3
 
 # Stop generator:
 gen.stop()
