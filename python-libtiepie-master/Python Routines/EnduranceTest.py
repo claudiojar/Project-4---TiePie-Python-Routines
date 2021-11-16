@@ -13,22 +13,24 @@ import libtiepie
 import time
 
 import numpy as np
+from numpy.lib.function_base import average
 import MiraexLib.plot as miraex_plt
 from MiraexLib.printinfo import*
+from MiraexLib.misc import fprint
 
 
 # %% Settings
 name = 'EnduranceTest'
 
-freq = 2100
-TestDuration = 5  # Duration of the test in secs
+freq = 2e3
+TestDuration = 2  # Duration of the test in secs
 MeasFreq = 1  # time interval between measurements (approximative)
 
-Lrec = 10000  # Recording length
-Fs = 1e6  # Sampling freq
+Lrec = 5  # Recording length : the number of samples that will be taken per loop, default = 10000
+Fs = 200e3  # Sampling freq
 
-ampIn = 12  # input amplitude in V
-ampRange = 2  # oscilloscope amplitude in V
+ampOut = 1  # input amplitude in V
+ampRange = 4  # oscilloscope amplitude in V
 
 
 # %% Opening devices and setting up devices
@@ -50,6 +52,9 @@ for item in libtiepie.device_list:
         if gen:
             break
 
+'''
+REMOVE COMMENTS FOR HS3
+
 if gen:
     try:
         # Set signal type:
@@ -59,7 +64,7 @@ if gen:
         gen.frequency = freq  # in Hz
 
         # Set amplitude:
-        gen.amplitude = ampIn  # in V
+        gen.amplitude = ampOut  # in V
 
         # Set offset:
         gen.offset = 0  # in V
@@ -75,7 +80,7 @@ if gen:
 
     except:
         print('Exception at Signal Generation')
-
+'''
 
 # %% Open scope and perform test
 
@@ -85,13 +90,14 @@ duration = 0
 average_list = []
 data_storage = []
 processed_data = []
-VAmpRMS = []
-vDuration = []
+Vect_AmpRMS = []
+Vect_Duration = []
 
 my_time = time.time()
 print(my_time)
 while duration < TestDuration:
 
+    print('--------------------------')
     # Try to open an oscilloscope with block measurement support:
     scp = None
     for item in libtiepie.device_list:
@@ -134,6 +140,9 @@ while duration < TestDuration:
             for ch in scp.channels:
                 ch.trigger.enabled = False
 
+            '''
+            REMOVE COMMENTS FOR HS3
+
             # Locate trigger input:
             # or TIID_GENERATOR_START or TIID_GENERATOR_STOP
             trigger_input = scp.trigger_inputs.get_by_id(
@@ -144,6 +153,7 @@ while duration < TestDuration:
 
             # Enable trigger input:
             trigger_input.enabled = True
+            '''
 
             # Print oscilloscope info (optional):
             # print_device_info(scp)
@@ -163,15 +173,31 @@ while duration < TestDuration:
 
     # Data processing
 
+    #print(f'{data = }')
     np_data = np.array(data)  # numpy array
-    average_list.append(np.mean(np_data))
+    print(f'{np_data = }, {np_data.shape = }')
 
-    for data_point in np_data:
-        processed_data.append((data_point - np.mean(data)))
+    # average value of the data fetched during 1 loop per channel
+    average_list.append([np.mean(np_data[i]) for i in range(len(np_data))])
 
-    # print(processed_data)  # ??????
+    # Substract the mean of np_data to each element of np_data during 1 loop
+    '''
+    Processed data will have n number of elements, each has 2 sub-dimensions that represent the 2 channels that we are working with in the oscilloscope.
+    The number of elements n is the number of iterations of the loop. It increases as the test time increases.
+    '''
+
+    # By substracting the mean we remove the offset
+    processed_data.append(np_data - np.mean(np_data))
+
+    # Get all channel data value ranges (which are compensated for probe gain/offset)
+    data_range_min_max = []
+    for channel in scp.channels:
+        data_range_min_max.append(
+            [channel._get_data_value_min(), channel._get_data_value_max()])
 
     '''
+    COMMENT DEPRECATED, BUT LEAVING IT HERE JUST IN CASE. SAFE TO IGNORE.
+
     Possible problem here because we are already computing the variance between the datapoints
     and the average of those datapoints. Yet we later take that data anc compute an RMS of it, which
     should yield the STD, but we are computing the STD of the STD ?
@@ -179,39 +205,49 @@ while duration < TestDuration:
     MATLAB reference code lacks documentation, therefore we decide to use the STD of the data as a
     statistic metric and come back to it once the issue has been cleared.
     '''
-
-    data_storage.append(processed_data)
+    data_storage = (processed_data)
 
     # Creation of lists to plot
     '''
     Possible confusion over statistics here in the reference MATLAB code ?
     '''
-    AmpRMS = np.sqrt(np.mean((np.array(processed_data))**2))
-    VAmpRMS.append(AmpRMS)
-    VAmpRMS_np = np.array(VAmpRMS)
 
-    # print(AmpRMS)
-    # print(VAmpRMS)
+    '''
+    Here we diverge from the ref. MATLAB file. We will compute the RMS value of the channels 1 and 2 overone acquisition period and write it to a JSON file. We will also plot the RMS values of channels 1 and 2 over that acquisition in order to verify the intergrity of the data and then we simply dump the plot.
+    '''
+    # RMS of the data fetched in 1 loop iteration
+    AmpRMS = np.sqrt(np.mean((np.array(processed_data))**2))
+
+    print(f'{AmpRMS = }')
+
+    # Create a vector with all the RMS values of all loops, updates each loop
+    Vect_AmpRMS.append(AmpRMS)
+    Vect_AmpRMS_np = np.array(Vect_AmpRMS)
 
     # duration before plotting, might be inaccurate to IRL !!!
     duration = time.time() - my_time  # secs
 
     # creation of duration array for plotting
-    vDuration.append(duration)
+    Vect_Duration.append(duration)
 
-    print(f'{len(vDuration) = }')
-    print(f'{len(VAmpRMS) = }')
+    print(f'{(Vect_Duration) = }')
+    print(f'{(Vect_AmpRMS_np) = }')
 
     # Plotting
     """Dynamic plotting every iteration of the while loop"""
-    miraex_plt.DynamicPlot2(vDuration, (VAmpRMS_np*1000),
-                            'xlabel', 'ylabel', 'title')
+    miraex_plt.DynamicPlot2(Vect_Duration, (Vect_AmpRMS_np*1000),
+                            'Duration [s]', 'RMS (x1000)', 'Dynamic Endurance Test')
+
+print('--------------------------')
+'''
+REMOVE COMMENTS FOR HS3
 
 # Stop generator:
 gen.stop()
 
 # Disable output:
 gen.output_on = False
+'''
 
 # print(VAmpRMS)
 print(len(data_storage))
@@ -223,13 +259,9 @@ print(f'{duration = } seconds')
 vfour = []
 
 for i in range(len(data_storage)):
-    AmpRMS = np.sqrt(np.mean((np.array(processed_data))**2))
-    VAmpRMS.append(AmpRMS)
-    VAmpRMS_np = np.array(VAmpRMS)
-
-
+    pass
 # %%
 
-
 # Keep the ShowPlots command at the end of the script !!!!!!
-miraex_plt.ShowPlots()
+
+# miraex_plt.ShowPlots()

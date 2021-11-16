@@ -31,3 +31,7 @@ def getParent(path, levels=1):
     # Parent directory upto specified
     # level
     return os.path.relpath(path, common)
+
+
+def fprint(param):
+    print(f'{param = }')

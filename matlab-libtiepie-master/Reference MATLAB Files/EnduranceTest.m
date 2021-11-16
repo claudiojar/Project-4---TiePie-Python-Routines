@@ -163,7 +163,7 @@ while duration < TestDuration
         % Get data:
         arData = scp.getData();
         ave = [ave; mean(arData)];
-        arData = arData - mean(arData);
+        arData = arData - mean(arData); %substract mean(arData) from each element in arData
 
         % Get all channel data value ranges (which are compensated for probe gain/offset):
         clear darRangeMin;
