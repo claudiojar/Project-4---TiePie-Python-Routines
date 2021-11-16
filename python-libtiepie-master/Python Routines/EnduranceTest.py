@@ -159,7 +159,7 @@ while duration < TestDuration:
             data = scp.get_data()
 
         except:
-            print('Error in at Scope Generation')
+            print('Error at Scope Generation')
 
     # Data processing
 
@@ -203,6 +203,7 @@ while duration < TestDuration:
     print(f'{len(VAmpRMS) = }')
 
     # Plotting
+    """Dynamic plotting every iteration of the while loop"""
     miraex_plt.DynamicPlot2(vDuration, (VAmpRMS_np*1000),
                             'xlabel', 'ylabel', 'title')
 

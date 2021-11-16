@@ -17,6 +17,7 @@ from numpy.core.fromnumeric import shape
 import numpy as np
 import MiraexLib.plot as miraex_plt
 from MiraexLib.printinfo import*
+import MiraexLib.misc as miraex_misc
 
 
 # %% Functions
@@ -29,7 +30,7 @@ myName = 'DM-0001_afterUV_drift'  # Saving name
 myTime = 1  # pause time to add between measurements (5.5 s min)  [s]
 myRange = 4  # range in V (CAREFUL think about changing it !!!!)
 
-nb_of_chunks = 5
+nb_of_chunks = 1
 
 # %%
 
@@ -38,6 +39,13 @@ DC2 = []
 DC1 = []
 
 timeline = []
+writeDir = '\\savefigures\\'
+
+myPath = os.getcwd()
+print(f'{myPath = } ')
+myPath += writeDir
+print(myPath)
+
 
 # %% Data acquisition
 
@@ -120,7 +128,6 @@ if scp:
                 """
                 BEGIN DYNAMIC PLOT
                 """
-                print('hello')
                 x_data = np.linspace(0, 1, len(data[0]))
                 y_data = data[0]
                 miraex_plt.DynamicPlot2(
@@ -162,7 +169,7 @@ else:
 data_np = np.array(data)
 
 miraex_plt.GenericPlot(np.linspace(0, 1, len(data_np[0])), data_np[0],
-                       'Time', 'Voltage', 'TITLE', 'myLegend')
+                       'Time', 'Voltage', 'TITLE', 'myLegend', True)
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
