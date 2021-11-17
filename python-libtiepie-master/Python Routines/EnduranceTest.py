@@ -10,6 +10,7 @@ Miraex - Endurance Test for piezoelectric shaker
 from __future__ import print_function
 import sys
 import os
+from typing import final
 import libtiepie
 import time
 import datetime
@@ -37,8 +38,9 @@ nb_of_graphs_to_show = int(input(
 
 # %% Settings
 freq = 2e3
-TestLoopDuration = 1*_seconds  # Duration of the test loop
-TestTotalDuration = 5*_seconds  # Duration of the entire test
+
+TestLoopDuration = 30*_seconds  # Duration of the test loop
+TestTotalDuration = 50*_minutes  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
@@ -86,7 +88,6 @@ for item in libtiepie.device_list:
 
 '''
 REMOVE COMMENTS FOR HS3
-
 if gen:
     try:
         # Set signal type:
@@ -137,7 +138,6 @@ while total_duration < TestTotalDuration:
     loop_start_time = time.time()
 
     average_list = []
-    data_storage = []
     data_no_offset = []
     Vect_AmpRMS = []
     Vect_Duration = []
@@ -207,6 +207,7 @@ while total_duration < TestTotalDuration:
 
                 # Enable trigger input:
                 trigger_input.enabled = True
+
                 '''
 
                 # Print oscilloscope info (optional):
@@ -255,6 +256,9 @@ while total_duration < TestTotalDuration:
         # By substracting the mean we remove the DC offset for each channel
         data_no_offset.append(
             [np_data[i] - average_list[loop_counter-1][i] for i in range(len(np_data))])
+
+        del np_data
+
         '''
         print('data_no_offset')
         print(data_no_offset)
@@ -277,7 +281,6 @@ while total_duration < TestTotalDuration:
         MATLAB reference code lacks documentation, therefore we decide to use the STD of the data as a
         statistic metric and come back to it once the issue has been cleared.
         '''
-        data_storage = (data_no_offset)
 
         # Creation of lists to plot
         '''
@@ -333,7 +336,6 @@ while total_duration < TestTotalDuration:
 
 '''
 REMOVE COMMENT FOR HS3
-
 # Stop generator:
 gen.stop()
 
@@ -342,12 +344,31 @@ gen.output_on = False
 '''
 
 # print(VAmpRMS)
-print(len(data_storage))
 print(f'{total_duration = } seconds')
 
+# Don't forget to close the file !
+result_file.close()
 
 # %% Post processing
+# Required time to write the data !
+time.sleep(1)
+
+result_file = open(writeDir_func+file_name, "ab")
+
+final_data = np.loadtxt(writeDir_func+file_name)
+print(writeDir_func+file_name)
+
+final_data_tp = np.transpose(final_data)
+print(final_data_tp)
+print(final_data_tp.shape)
+
+x_data = np.arange(final_data_tp.shape[1])
+print(x_data)
+
+for i in range(len(final_data_tp)):
+    miraex_plt.GenericPlot(
+        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'])
 
 # Keep the ShowPlots command at the end of the script !!!!!!
 
-# miraex_plt.ShowPlots()
+miraex_plt.ShowPlots()
