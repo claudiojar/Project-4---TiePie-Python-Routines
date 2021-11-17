@@ -9,16 +9,16 @@ Miraex - Endurance Test for piezoelectric shaker
 
 from __future__ import print_function
 import sys
+import os
 import libtiepie
 import time
+import datetime
 
 import numpy as np
-from numpy.lib.function_base import average
 import MiraexLib.plot as miraex_plt
 from MiraexLib.printinfo import*
-from MiraexLib.misc import fprint
 
-# %% Magic numbers
+# %% Magic numbers and setup
 _seconds = 1
 _minutes = _seconds*60
 _hours = _minutes*60
@@ -35,11 +35,11 @@ nb_of_graphs_to_show = int(input(
     'For how many epochs would you like to show the dynamic plot ? '))
 
 # %% Settings
-name = 'EnduranceTest'
+name = 'EnduranceTest_'
 
 freq = 2e3
 TestLoopDuration = 5*_seconds  # Duration of the test loop
-TestTotalDuration = 20*_seconds  # Duration of the entire test
+TestTotalDuration = 25*_seconds  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
@@ -48,12 +48,35 @@ if TestTotalDuration <= TestLoopDuration:
 
 MeasFreq = 1  # time interval between measurements (approximative)
 
-Lrec = 5  # Recording length : the number of samples that will be taken per loop, default = 10000
+Lrec = 100  # Recording length : the number of samples that will be taken per loop, default = 10000
 Fs = 200e3  # Sampling freq
 
 ampOut = 1  # input amplitude in V
 ampRange = 4  # oscilloscope amplitude in V
 
+# %% Setting up result file
+
+# File will be named with date in the name
+now = datetime.datetime.now()
+current_time = now.strftime("%m-%d-%Y_@_%H-%M-%S")
+file_extension = '.txt'
+
+# Complete file name
+file_name = name+current_time+file_extension
+
+# Write directory within the repo
+writeDir_in_repo = '\\exports\\raw-data\\'
+
+# Get repo path
+myPath = os.getcwd()
+
+writeDir = myPath + writeDir_in_repo
+print(f'{writeDir = } ')
+
+# Open the text file to write the results
+result_file = open(writeDir+file_name, "ab")
+
+result_file.truncate(0)
 
 # %% Opening devices and setting up devices
 
@@ -104,11 +127,13 @@ if gen:
         print('Exception at Signal Generation')
 '''
 
-# %% Open scope and perform test
+# %% Perform test
 
+# Setting starting counters
 total_duration = 0
 epoch_counter = 0
 
+# Setting starting time
 total_start_time = time.time()
 print('Starting time : ', total_start_time)
 
@@ -283,6 +308,11 @@ while total_duration < TestTotalDuration:
 
         # Create a Channel first array of RMS values for plotting and better addressing of the data
         Channel_AmpRMS = np.transpose(Vect_AmpRMS_np)
+
+        # Printing data for verification
+        print('Iteration RMS values : ')
+        print(Vect_AmpRMS_np)
+
         print('Channel RMS values : ')
         print(Channel_AmpRMS)
 
@@ -304,6 +334,12 @@ while total_duration < TestTotalDuration:
 
         print('End of inner loop ', loop_counter)
 
+    # Writing of RMS values at the end of each EPOCH, the data we write contains all the RMS values for all the loops contained within one epoch
+
+    # f.write(b"\n")
+    # In the resulting file each column represents one channel
+    np.savetxt(result_file, Vect_AmpRMS_np)
+
     total_duration = time.time() - total_start_time
     print('END OF EPOCH', epoch_counter)
     print('--------------------------')
@@ -324,12 +360,6 @@ print(f'{total_duration = } seconds')
 
 
 # %% Post processing
-
-vfour = []
-
-for i in range(len(data_storage)):
-    pass
-# %%
 
 # Keep the ShowPlots command at the end of the script !!!!!!
 
