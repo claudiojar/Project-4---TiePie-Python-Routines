@@ -8,6 +8,8 @@ Miraex - Miscellaneous Routines
 """
 
 import os
+import datetime
+import sys
 
 
 def getParent(path, levels=1):
@@ -32,3 +34,36 @@ def getParent(path, levels=1):
     # level
     return os.path.relpath(path, common)
 
+
+def CreateFileName(ParentName: str, FileType='txt'):
+    # File will be named with date in the name
+    now = datetime.datetime.now()
+    current_time_str = now.strftime("%m-%d-%Y_@_%H-%M-%S")
+
+    # Complete file name
+    file_name = ParentName+'__'+current_time_str+'.'+FileType
+
+    return file_name
+
+
+def CreateWriteDir(DataType: str):
+
+    allowed_types = ['raw', 'figure']
+
+    if DataType not in allowed_types:
+        print('ERROR : DataType must be "raw" or "figure".')
+        sys.exit(0)
+
+    # Write directory within the repo
+    if DataType == 'raw':
+        writeDir_in_repo = '\\exports\\raw-data\\'
+    elif DataType == 'figure':
+        writeDir_in_repo = '\\exports\\figures\\'
+
+    # Get repo path
+    myPath = os.getcwd()
+    print(myPath)
+    writeDir = myPath + writeDir_in_repo
+    print(f'{writeDir = } ')
+
+    return writeDir

@@ -16,6 +16,7 @@ import datetime
 
 import numpy as np
 import MiraexLib.plot as miraex_plt
+import MiraexLib.misc as miraex_misc
 from MiraexLib.printinfo import*
 
 # %% Magic numbers and setup
@@ -35,11 +36,9 @@ nb_of_graphs_to_show = int(input(
     'For how many epochs would you like to show the dynamic plot ? '))
 
 # %% Settings
-name = 'EnduranceTest_'
-
 freq = 2e3
-TestLoopDuration = 5*_seconds  # Duration of the test loop
-TestTotalDuration = 25*_seconds  # Duration of the entire test
+TestLoopDuration = 1*_seconds  # Duration of the test loop
+TestTotalDuration = 5*_seconds  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
@@ -55,26 +54,14 @@ ampOut = 1  # input amplitude in V
 ampRange = 4  # oscilloscope amplitude in V
 
 # %% Setting up result file
-
-# File will be named with date in the name
-now = datetime.datetime.now()
-current_time = now.strftime("%m-%d-%Y_@_%H-%M-%S")
-file_extension = '.txt'
-
-# Complete file name
-file_name = name+current_time+file_extension
-
-# Write directory within the repo
-writeDir_in_repo = '\\exports\\raw-data\\'
-
-# Get repo path
-myPath = os.getcwd()
-
-writeDir = myPath + writeDir_in_repo
-print(f'{writeDir = } ')
+# Create file_name
+name = 'EnduranceTest'
+file_name = miraex_misc.CreateFileName(name, 'txt')
+writeDir_func = miraex_misc.CreateWriteDir('raw')
 
 # Open the text file to write the results
-result_file = open(writeDir+file_name, "ab")
+result_file = open(writeDir_func+file_name, "ab")
+print(result_file)
 
 result_file.truncate(0)
 
