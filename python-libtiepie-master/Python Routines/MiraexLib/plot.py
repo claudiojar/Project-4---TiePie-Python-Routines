@@ -102,3 +102,7 @@ def DynamicPlot2(x_data, y_data, x_label: str, y_label: str, title: str):
 
 def SavePlot():
     print('Saving Plot')
+
+
+def ClosePlot():
+    plt.close('all')
