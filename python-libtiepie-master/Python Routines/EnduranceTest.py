@@ -39,8 +39,8 @@ nb_of_graphs_to_show = int(input(
 # %% Settings
 freq = 2e3
 
-TestLoopDuration = 30*_seconds  # Duration of the test loop
-TestTotalDuration = 50*_minutes  # Duration of the entire test
+TestLoopDuration = 1*_minutes # Duration of the test loop
+TestTotalDuration = 100*_minutes  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
