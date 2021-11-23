@@ -349,22 +349,21 @@ result_file.close()
 # Required time to write the data !
 time.sleep(1)
 
+# Opening data file to plot final data
 result_file = open(writeDir_func+file_name, "ab")
-
 final_data = np.loadtxt(writeDir_func+file_name)
-print(writeDir_func+file_name)
 
+# Creating final data
 final_data_tp = np.transpose(final_data)
-print(final_data_tp)
-print(final_data_tp.shape)
 
+# Plotting final data
 x_data = np.arange(final_data_tp.shape[1])
-print(x_data)
 
 for i in range(len(final_data_tp)):
     miraex_plt.GenericPlot(
         x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'])
 
 # Keep the ShowPlots command at the end of the script !!!!!!
-
 miraex_plt.ShowPlots()
+result_file.close()
+
