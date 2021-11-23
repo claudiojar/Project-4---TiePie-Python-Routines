@@ -10,6 +10,8 @@ Miraex - Miscellaneous Routines
 import os
 import datetime
 import sys
+import tkinter as tk
+from tkinter import filedialog
 
 
 def getParent(path, levels=1):
@@ -67,3 +69,12 @@ def CreateWriteDir(DataType: str):
     print(f'{writeDir = } ')
 
     return writeDir
+
+
+def OpenFileDialog():
+    
+    root = tk.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename()
+
+    return file_path
