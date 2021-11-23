@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Created on 21.10.2021
+
+Miraex - Plotting library
+
+@author: Claudio Jaramillo
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
@@ -112,5 +121,5 @@ def SavePlot():
     print('Saving Plot')
 
 
-def ClosePlot():
+def CloseAllPlots():
     plt.close('all')

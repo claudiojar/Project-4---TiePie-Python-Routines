@@ -39,8 +39,8 @@ nb_of_graphs_to_show = int(input(
 # %% Settings
 freq = 2e3
 
-TestLoopDuration = 1*_minutes  # Duration of the test loop
-TestTotalDuration = 0*_days + 100*_minutes  # Duration of the entire test
+TestLoopDuration = 10*_seconds  # Duration of the test loop
+TestTotalDuration = 0*_days + 1*_minutes  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
@@ -315,7 +315,7 @@ while total_duration < TestTotalDuration:
                                         'Duration [s]', 'RMS', 'Dynamic Endurance Test')
 
         else:
-            miraex_plt.ClosePlot()
+            miraex_plt.CloseAllPlots()
 
         print('End of inner loop ', loop_counter)
 
@@ -360,10 +360,11 @@ final_data_tp = np.transpose(final_data)
 x_data = np.arange(final_data_tp.shape[1])
 
 for i in range(len(final_data_tp)):
+
+    legend = 'Channel '+str(i+1)
     miraex_plt.GenericPlot(
-        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'])
+        x_data, final_data_tp[i], 'Time', 'RMS', file_name, legend)
 
 # Keep the ShowPlots command at the end of the script !!!!!!
 miraex_plt.ShowPlots()
 result_file.close()
-

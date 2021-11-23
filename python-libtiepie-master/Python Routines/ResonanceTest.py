@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wednesday 10.11.2021 at 09:35
+Created on Wednesday 20.11.2021 at 10:44
 
-Miraex - Endurance Test for piezoelectric shaker
+Miraex - Resonance Test for piezoelectric shaker
 
 @author: Claudio Jaramillo
 """
@@ -296,6 +296,8 @@ for incre in range(points):
             miraex_plt.DynamicPlot2(v_gen_freq, (channel_amp_rms[i])*1000,
                                     'Frequency [Hz]', 'RMS', 'Dynamic Resonance Test', True)
 
+    else:
+        miraex_plt.CloseAllPlots()
 
 # In the resulting file each column represents one channel
 np.savetxt(result_file, v_amplitude_rms_np)
@@ -313,8 +315,10 @@ final_data_tp = np.transpose(final_data)
 # Plotting final data
 x_data = v_gen_freq
 for i in range(len(final_data_tp)):
+
+    legend = 'Channel '+str(i+1)
     miraex_plt.GenericPlot(
-        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'], x_log=True)
+        x_data, final_data_tp[i]*1000, 'Frequency [Hz]', 'RMS [mV]', file_name, legend, x_log=True)
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
