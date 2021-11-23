@@ -39,8 +39,8 @@ nb_of_graphs_to_show = int(input(
 # %% Settings
 freq = 2e3
 
-TestLoopDuration = 1*_minutes # Duration of the test loop
-TestTotalDuration = 100*_minutes  # Duration of the entire test
+TestLoopDuration = 1*_minutes  # Duration of the test loop
+TestTotalDuration = 0*_days + 100*_minutes  # Duration of the entire test
 
 if TestTotalDuration <= TestLoopDuration:
     print('ERROR')
@@ -88,6 +88,8 @@ for item in libtiepie.device_list:
 
 '''
 REMOVE COMMENTS FOR HS3
+'''
+
 if gen:
     try:
         # Set signal type:
@@ -113,7 +115,6 @@ if gen:
 
     except:
         print('Exception at Signal Generation')
-'''
 
 # %% Perform test
 
@@ -196,6 +197,7 @@ while total_duration < TestTotalDuration:
 
                 '''
                 REMOVE COMMENT FOR HS3
+                '''
 
                 # Locate trigger input:
                 # or TIID_GENERATOR_START or TIID_GENERATOR_STOP
@@ -207,8 +209,6 @@ while total_duration < TestTotalDuration:
 
                 # Enable trigger input:
                 trigger_input.enabled = True
-
-                '''
 
                 # Print oscilloscope info (optional):
                 # print_device_info(scp)
@@ -234,13 +234,6 @@ while total_duration < TestTotalDuration:
 
         np_data = np.array(data)  # numpy array
         #print(f'{np_data.shape = }')
-
-        '''
-        np_data = np.array([[1, 1, 3, 3, 3],
-                            [2, 3, 2, 2, 2],
-                            [3, 4, 3, 3, 3],
-                            [4, 5, 4, 4, 4]])
-        '''
 
         # average value of the data fetched during 1 loop per channel
         # The first index is the iteration index
@@ -336,12 +329,13 @@ while total_duration < TestTotalDuration:
 
 '''
 REMOVE COMMENT FOR HS3
+'''
 # Stop generator:
 gen.stop()
 
 # Disable output:
 gen.output_on = False
-'''
+
 
 # print(VAmpRMS)
 print(f'{total_duration = } seconds')
