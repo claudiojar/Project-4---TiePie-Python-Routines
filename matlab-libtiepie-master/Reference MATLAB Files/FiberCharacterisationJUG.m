@@ -15,7 +15,7 @@ ampRange = 4; % oscillo amplitude in V
 
 %%
 global h; % make h a global variable so it can be used outside the main
-          % function. Useful when you do event handling and sequential           move
+          % function. Useful when you do event handling and sequential move
 %% Create Matlab Figure Container
 fpos    = get(0,'DefaultFigurePosition'); % figure default position
 fpos(3) = 650; % figure window size;Width
