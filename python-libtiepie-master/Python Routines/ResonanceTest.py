@@ -72,6 +72,8 @@ data_no_offset = []
 for incre in range(points):
     freq = start + (stop - start)/(points-1)*(incre-1)
     v_freq.append(freq)
+    print('--------------')
+    print(freq)
 
     # Try to open an oscilloscope with block measurement support and a generator in the same device:
     scp = None
@@ -148,10 +150,10 @@ for incre in range(points):
             gen.output_on = True
 
             # Print oscilloscope info:
-            print_device_info(scp)
+            # print_device_info(scp)
 
             # Print generator info:
-            print_device_info(gen)
+            # print_device_info(gen)
 
             # Get information about the frequency
             v_gen_freq.append(gen.frequency)
@@ -200,8 +202,6 @@ for incre in range(points):
             data_no_offset.append(
                 [np_data[i] - average_signal[incre-1][i] for i in range(len(np_data))])
 
-            del np_data
-
             '''
             print('data_no_offset')
             print(data_no_offset)
@@ -248,3 +248,35 @@ for incre in range(points):
     else:
         print('No oscilloscope available with block measurement support or generator available in the same unit!')
         sys.exit(1)
+
+    Data_Storage.append(data)
+
+    # RMS of the data fetched in 1 loop iteration, for each channel
+    Amplitude_RMS = [np.sqrt(np.mean((np.array(data_no_offset[incre-1][i]))**2))
+                     for i in range(len(data_no_offset[incre-1]))]
+
+    v_amplitude_rms.append(Amplitude_RMS)
+
+    '''
+    print('Amplitude RMS')
+    print(Amplitude_RMS)
+
+    print('v_amplitude_rms')
+    print(v_amplitude_rms)
+    '''
+
+    x_data = v_gen_freq
+
+    # y_data contains the RMS for iteration for each channel : y_data[iteration][channel]
+    y_data = [v_amplitude_rms[i][0]*1000 for i in range(len(v_amplitude_rms))]
+
+    '''
+    print('xdata')
+    print(x_data)
+
+    print('ydata')
+    print(y_data)
+    '''
+
+    miraex_plt.DynamicPlot2(
+        x_data, y_data, 'Frequency [Hz]', 'RMS of amplitude [mV]', 'RMS', x_log=True)

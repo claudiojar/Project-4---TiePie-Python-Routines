@@ -87,14 +87,18 @@ def DynamicPlot(x_data, y_data):
     # pyplot.show()
 
 
-def DynamicPlot2(x_data, y_data, x_label: str, y_label: str, title: str):
+def DynamicPlot2(x_data, y_data, x_label: str, y_label: str, title: str, x_log='False'):
     """
     Generates a dynamic plot of the data passed in x_data and y_data. This data is expected to be updated in a loop every iteration of the loop.
     """
+
     plt.suptitle(f'{title}', weight="bold", size='x-large')
     # plt.grid(which='both')
     plt.xlabel(x_label)
     plt.ylabel(y_label)
+
+    if x_log:
+        plt.xscale('log')
 
     plt.plot(x_data, y_data, '--*')
     plt.pause(0.1)
