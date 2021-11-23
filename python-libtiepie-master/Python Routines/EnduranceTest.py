@@ -293,11 +293,13 @@ while total_duration < TestTotalDuration:
         Channel_AmpRMS = np.transpose(Vect_AmpRMS_np)
 
         # Printing data for verification
+        '''
         print('Iteration RMS values : ')
         print(Vect_AmpRMS_np)
 
         print('Channel RMS values : ')
         print(Channel_AmpRMS)
+        '''
 
         # duration before plotting, might be inaccurate to IRL !!!
         loop_duration = time.time() - loop_start_time  # secs

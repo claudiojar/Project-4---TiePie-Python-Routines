@@ -38,6 +38,19 @@ Fs = 1e6  # Sampling freq
 target = 12e3  # target resonance frequency in Hz
 tolerance = 3e3  # tolerance for the past fail in Hz
 
+# %% Setting up result file
+# Create file_name
+name = 'ResonanceTest'
+file_name = miraex_misc.CreateFileName(name, 'txt')
+writeDir_func = miraex_misc.CreateWriteDir('raw')
+
+# Open the text file to write the results
+result_file = open(writeDir_func+file_name, "ab")
+print(result_file)
+
+result_file.truncate(0)
+
+
 # %% Opening devices and setting up devices
 
 # Print library info:
@@ -256,6 +269,10 @@ for incre in range(points):
                      for i in range(len(data_no_offset[incre-1]))]
 
     v_amplitude_rms.append(Amplitude_RMS)
+    v_amplitude_rms_np = np.array(v_amplitude_rms)
+
+    # Create a Channel first array of RMS values for plotting and better addressing of the data
+    channel_amp_rms = np.transpose(v_amplitude_rms_np)
 
     '''
     print('Amplitude RMS')
@@ -278,5 +295,35 @@ for incre in range(points):
     print(y_data)
     '''
 
-    miraex_plt.DynamicPlot2(
-        x_data, y_data, 'Frequency [Hz]', 'RMS of amplitude [mV]', 'RMS', x_log=True)
+    # In the resulting file each column represents one channel
+    np.savetxt(result_file, v_amplitude_rms_np)
+
+    # Dynamic plotting
+    for i in range(len(channel_amp_rms)):
+        miraex_plt.DynamicPlot2(v_gen_freq, (channel_amp_rms[i])*1000,
+                                'Frequency [Hz]', 'RMS', 'Dynamic Resonance Test', True)
+
+
+result_file.close()
+
+time.sleep(1)
+
+result_file = open(writeDir_func+file_name, "ab")
+
+final_data = np.loadtxt(writeDir_func+file_name)
+print(writeDir_func+file_name)
+
+final_data_tp = np.transpose(final_data)
+print(final_data_tp)
+print(final_data_tp.shape)
+
+x_data = np.arange(final_data_tp.shape[1])
+print(x_data)
+
+for i in range(len(final_data_tp)):
+    miraex_plt.GenericPlot(
+        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'])
+
+
+# Keep the ShowPlots command at the end of the script !!!!!!
+miraex_plt.ShowPlots()
