@@ -45,6 +45,7 @@ figure('Name','Live plot')
 vamprms = [];
 ave = []; % average signal value
 DatStor = {};
+
 for incre = 1:points
     freq = start + (stop - start)/(points-1)*(incre-1);
     vfreq(incre) = freq;
