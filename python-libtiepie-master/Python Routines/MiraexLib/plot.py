@@ -13,7 +13,7 @@ def ShowPlots():
     plt.show()
 
 
-def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, mylegend: list, bool_save=False, save_path=str(os.getcwd())):
+def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, mylegend: list, bool_save=False, save_path=str(os.getcwd()), x_log=False):
     """
     Function to generate a generic plot using MatplotLib.
     """
@@ -38,6 +38,10 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
         """
     ax_total.set_xlabel(xlabel)
     ax_total.set_ylabel(ylabel)
+
+    if x_log:
+        plt.xscale('log')
+
     legend = ax_total.legend()
 
     if bool_save:

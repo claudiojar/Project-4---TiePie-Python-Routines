@@ -22,7 +22,7 @@ from MiraexLib.printinfo import*
 
 
 # %% Settings
-name = 'wf9148x12KxXXXX'
+name = 'wf9148x12KxXXXX__'
 
 # Parameters for the sweep over frequency
 start = 5e3  # Sweep starting frequency in Hz
@@ -40,7 +40,7 @@ tolerance = 3e3  # tolerance for the past fail in Hz
 
 # %% Setting up result file
 # Create file_name
-name = 'ResonanceTest'
+name += 'ResonanceTest'
 file_name = miraex_misc.CreateFileName(name, 'txt')
 writeDir_func = miraex_misc.CreateWriteDir('raw')
 
@@ -50,6 +50,8 @@ print(result_file)
 
 result_file.truncate(0)
 
+nb_of_points_to_show = int(input(
+    'For how many iterations would you like to show the dynamic plot ? '))
 
 # %% Opening devices and setting up devices
 
@@ -288,15 +290,15 @@ for incre in range(points):
     print(y_data)
     '''
 
-    # In the resulting file each column represents one channel
-    np.savetxt(result_file, v_amplitude_rms_np)
-
-    # Dynamic plotting
-    for i in range(len(channel_amp_rms)):
-        miraex_plt.DynamicPlot2(v_gen_freq, (channel_amp_rms[i])*1000,
-                                'Frequency [Hz]', 'RMS', 'Dynamic Resonance Test', True)
+    if incre < nb_of_points_to_show:
+        # Dynamic plotting
+        for i in range(len(channel_amp_rms)):
+            miraex_plt.DynamicPlot2(v_gen_freq, (channel_amp_rms[i])*1000,
+                                    'Frequency [Hz]', 'RMS', 'Dynamic Resonance Test', True)
 
 
+# In the resulting file each column represents one channel
+np.savetxt(result_file, v_amplitude_rms_np)
 result_file.close()
 
 time.sleep(1)
@@ -309,10 +311,10 @@ final_data = np.loadtxt(writeDir_func+file_name)
 final_data_tp = np.transpose(final_data)
 
 # Plotting final data
-x_data = np.arange(final_data_tp.shape[1])
+x_data = v_gen_freq
 for i in range(len(final_data_tp)):
     miraex_plt.GenericPlot(
-        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'])
+        x_data, final_data_tp[i], 'x', 'y', 'title', ['legend'], x_log=True)
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
