@@ -65,6 +65,9 @@ v_freq = []
 # generator frequency
 v_gen_freq = []
 
+# Data with a removed DC component
+data_no_offset = []
+
 # Sweep loop
 for incre in range(points):
     freq = start + (stop - start)/(points-1)*(incre-1)
@@ -171,6 +174,45 @@ for incre in range(points):
 
             # Get data:
             data = scp.get_data()
+
+            # Data processing
+
+            # print(f'{data = }')
+            # np_data will be rewritten at every loop iteration
+            # np_data[nb of channels of the scope][nb of samples in channel]
+
+            np_data = np.array(data)  # numpy array
+            #print(f'{np_data.shape = }')
+
+            # average value of the data fetched during 1 loop per channel
+            # The first index is the iteration index
+            # The second index is the avg for channel index
+            average_signal.append([np.mean(np_data[i])
+                                  for i in range(len(np_data))])
+
+            # Substract the mean of np_data to each element of np_data during 1 loop
+            '''
+            Processed data will have n number of elements, each has nb_of_channels sub-dimensions that represent the nb of channels that we are working with in the oscilloscope.
+
+            The number of elements n is the number of iterations of the loop. It increases as the test time increases.
+            '''
+            # By substracting the mean we remove the DC offset for each channel
+            data_no_offset.append(
+                [np_data[i] - average_signal[incre-1][i] for i in range(len(np_data))])
+
+            del np_data
+
+            '''
+            print('data_no_offset')
+            print(data_no_offset)
+            print('processed data shape = ', np.array(data_no_offset).shape)
+            '''
+
+            # Get all channel data value ranges (which are compensated for probe gain/offset)
+            data_range_min_max = []
+            for channel in scp.channels:
+                data_range_min_max.append(
+                    [channel._get_data_value_min(), channel._get_data_value_max()])
 
             '''
             # Output CSV data:
