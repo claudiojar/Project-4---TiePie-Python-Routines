@@ -22,7 +22,7 @@ from MiraexLib.printinfo import*
 
 
 # %% Settings
-name = 'FrequencySweepTest1__'
+name = input('Name for the file : ')
 
 # Parameters for the sweep over frequency
 start = 5e3  # Sweep starting frequency in Hz
@@ -282,7 +282,7 @@ for incre in range(points):
     # y_data contains the RMS for iteration for each channel : y_data[iteration][channel]
     # In this case channel 0 is the measurement of amplitude of oscillation
     y_data = [v_amplitude_rms[i][0]*1000 for i in range(len(v_amplitude_rms))]
-    print('Current RMS [mV] : ', v_amplitude_rms[incre][0])
+    print('Current RMS [mV] : ', v_amplitude_rms[incre][0]*1000)
 
     '''
     print('xdata')
@@ -315,12 +315,12 @@ final_data = np.loadtxt(writeDir_func+file_name)
 final_data_tp = np.transpose(final_data)
 
 # Plotting final data
-x_data = v_gen_freq
+x_data = np.array(v_gen_freq)
 for i in range(len(final_data_tp)):
 
     legend = 'Channel '+str(i+1)
     miraex_plt.GenericPlot(
-        x_data, final_data_tp[i]*1000, 'Frequency [Hz]', 'Oscillation Amplitude RMS [mV]', file_name, legend, x_log=True)
+        x_data/1000, final_data_tp[i]*1000, 'Frequency [kHz]', 'Oscillation Amplitude RMS [mV]', file_name, legend, x_log=True)
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
