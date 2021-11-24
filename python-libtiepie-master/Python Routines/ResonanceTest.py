@@ -88,7 +88,7 @@ for incre in range(points):
     freq = start + (stop - start)/(points-1)*(incre-1)
     v_freq.append(freq)
     print('--------------')
-    print(freq)
+    print('Current frequency : ', freq)
 
     # Try to open an oscilloscope with block measurement support and a generator in the same device:
     scp = None
@@ -280,7 +280,9 @@ for incre in range(points):
     x_data = v_gen_freq
 
     # y_data contains the RMS for iteration for each channel : y_data[iteration][channel]
+    # In this case channel 0 is the measurement of amplitude of oscillation
     y_data = [v_amplitude_rms[i][0]*1000 for i in range(len(v_amplitude_rms))]
+    print('Current RMS [mV] : ', v_amplitude_rms[incre][0])
 
     '''
     print('xdata')
@@ -294,7 +296,7 @@ for incre in range(points):
         # Dynamic plotting
         for i in range(len(channel_amp_rms)):
             miraex_plt.DynamicPlot2(v_gen_freq, (channel_amp_rms[i])*1000,
-                                    'Frequency [Hz]', 'RMS', 'Dynamic Resonance Test', True)
+                                    'Frequency [Hz]', 'Oscillation Amplitude RMS [mV]', 'Dynamic Resonance Test', True)
 
     else:
         miraex_plt.CloseAllPlots()
@@ -318,7 +320,7 @@ for i in range(len(final_data_tp)):
 
     legend = 'Channel '+str(i+1)
     miraex_plt.GenericPlot(
-        x_data, final_data_tp[i]*1000, 'Frequency [Hz]', 'RMS [mV]', file_name, legend, x_log=True)
+        x_data, final_data_tp[i]*1000, 'Frequency [Hz]', 'Oscillation Amplitude RMS [mV]', file_name, legend, x_log=True)
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
