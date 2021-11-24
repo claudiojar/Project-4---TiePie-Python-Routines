@@ -17,4 +17,6 @@ import csv
 
 # %% Settings
 name = '12KferruleH70e'
-file = miraex_misc.OpenFileDialog()
+selected_file = miraex_misc.OpenFileDialog()
+
+print(selected_file)

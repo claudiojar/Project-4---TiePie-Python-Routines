@@ -22,7 +22,7 @@ from MiraexLib.printinfo import*
 
 
 # %% Settings
-name = 'wf9148x12KxXXXX__'
+name = 'FrequencySweepTest1__'
 
 # Parameters for the sweep over frequency
 start = 5e3  # Sweep starting frequency in Hz
@@ -32,7 +32,7 @@ points = 150  # Number of points for the sweep
 ampIn = 2  # input amplitude in V
 ampRange = 3  # oscillo amplitude in V
 
-Lrec = 10000  # Recording length
+Lrec = 10000  # Recording length for a data point
 Fs = 1e6  # Sampling freq
 
 target = 12e3  # target resonance frequency in Hz
