@@ -22,7 +22,7 @@ def ShowPlots():
     plt.show()
 
 
-def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, mylegend: list, bool_save=False, save_path=str(os.getcwd()), x_log=False):
+def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, mylegend: list, bool_save=False, save_path=str(os.getcwd()), x_log=False, is_caption=False, my_caption=''):
     """
     Function to generate a generic plot using MatplotLib.
     """
@@ -31,9 +31,9 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
 
     # define plot elements
     """
-        plt.hlines(y=Stats.TwoPercent, xmin=1, xmax=x_length,
+    plt.hlines(y=Stats.TwoPercent, xmin=1, xmax=x_length,
                    color='black', linestyles='dotted')
-        """
+    """
 
     # main title
     plt.suptitle(f'{title}', weight="bold", size='x-large')
@@ -42,9 +42,9 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
     # define plot parameters
     ax_total.plot(xData, yData, '--*', label=mylegend)
     """
-        ax_total.yaxis.set_major_formatter(
-            plt.FuncFormatter(self.FormatterTime))
-        """
+    ax_total.yaxis.set_major_formatter(
+    plt.FuncFormatter(self.FormatterTime))
+    """
     ax_total.set_xlabel(xlabel)
     ax_total.set_ylabel(ylabel)
 
@@ -73,6 +73,9 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
 
         # Saving the file
         fig_total.savefig(save_file)
+
+    if is_caption:
+        fig_total.text(.5, .02, my_caption, ha='center')
 
     # plt.show()
 
