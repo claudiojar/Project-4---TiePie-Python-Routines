@@ -8,16 +8,14 @@ Miraex - Resonance Test for piezoelectric shaker
 """
 
 from __future__ import print_function
-import sys
-import os
-from typing import final
 import libtiepie
 import time
-import datetime
+import matplotlib.pyplot as plt
 
 import numpy as np
 import MiraexLib.plot as miraex_plt
 import MiraexLib.misc as miraex_misc
+import MiraexLib.analysis as miraex_anls
 from MiraexLib.printinfo import*
 
 
@@ -318,9 +316,43 @@ final_data_tp = np.transpose(final_data)
 x_data = np.array(v_gen_freq)
 for i in range(len(final_data_tp)):
 
+    # Create y data to plot per channel
+    y_data = final_data_tp[i]
+
+    # Find data maximum and minimum and index
+    (my_max, my_max_index) = miraex_anls.find_max_peak(y_data)
+    (my_min, my_min_index) = miraex_anls.find_min_peak(y_data)
+
+    # Find and print the frequency at which the maximum appears
+    resonance_frequency = x_data[my_max_index]
+    print('Resonance Frequency : ', resonance_frequency)
+
+    # We arbitrarily detect a noise only signal
+    # We have to do this in order to avoind the FWHM detecting function breaking when trying to compute the FWHM for a noise only signal.
+    # This is kind of a hack
+    if my_max-my_min < 1e-3:
+        continue
+
+    # find the two crossing points
+    hmx = miraex_anls.half_max_x(x_data, y_data)
+
+    # print the FWHM
+    fwhm = hmx[1] - hmx[0]
+    print("FWHM:{:.3f}".format(fwhm))
+
+    # Find the Q-Factor
+    q_factor = resonance_frequency/fwhm
+    print('Q Factor : ', q_factor)
+
+    # a convincing plot
+    half = max(y_data)/2.0
+
     legend = 'Channel '+str(i+1)
+    caption = f'Resonance frequency : {resonance_frequency/1000:.2f} kHz | Q Factor : {q_factor:.2f}'
+
     miraex_plt.GenericPlot(
-        x_data/1000, final_data_tp[i]*1000, 'Frequency [kHz]', 'Oscillation Amplitude RMS [mV]', file_name, legend, x_log=True)
+        x_data, y_data, 'Frequency', 'RMS', name, legend, x_log=True, is_caption=True, my_caption=caption)
+    plt.plot(hmx, [half, half])
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!
