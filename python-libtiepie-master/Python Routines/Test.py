@@ -13,7 +13,7 @@ import MiraexLib.plot as miraex_plt
 import MiraexLib.analysis as miraex_anls
 import matplotlib.pyplot as plt
 
-my_dir = "C:\\Users\\Claudio\\Documents\\GitHub\\Project-4---TiePie-Python-Routines\\exports\\raw-data\\"
+my_dir = "H:\\My Drive\\EPFL\\2. Master\\MA3 - 2021\\Semester Project - Miraex\\Project 4 - TiePie Python Routines\\exports\\raw-data\\"
 name = "FrequencySweepTest1__ResonanceTest__11-24-2021_@_09-42-15.txt"
 my_file = my_dir+name
 
@@ -48,7 +48,7 @@ for i in range(len(final_data_tp)):
     print('Resonance Frequency : ', resonance_frequency)
 
     # We arbitrarily detect a noise only signal
-    # We have to do this in order to avoind the FWHM detecting function breaking when trying to compute the FWHM for a noise only signal.
+    # We have to do this in order to avoind the FWHM function breaking when trying to compute the FWHM for a noise only signal.
     # This is kind of a hack
     if my_max-my_min < 1e-3:
         continue

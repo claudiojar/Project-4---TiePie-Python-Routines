@@ -328,7 +328,7 @@ for i in range(len(final_data_tp)):
     print('Resonance Frequency : ', resonance_frequency)
 
     # We arbitrarily detect a noise only signal
-    # We have to do this in order to avoind the FWHM detecting function breaking when trying to compute the FWHM for a noise only signal.
+    # We have to do this in order to avoind the FWHM function breaking when trying to compute the FWHM for a noise only signal.
     # This is kind of a hack
     if my_max-my_min < 1e-3:
         continue
