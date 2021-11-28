@@ -27,8 +27,6 @@ my_file = my_dir+name
 result_file = open(my_file, "ab")
 final_data = np.loadtxt(my_file)
 
-print(final_data)
-
 # Creating final data
 final_data_tp = np.transpose(final_data)
 
@@ -41,6 +39,9 @@ x_data = np.arange(start, stop, step)
 
 # For each channel...
 for i in range(len(final_data_tp)):
+    # Print Channel
+    print('-----------------------------')
+    print('Channel ', i+1)
 
     # Create y data to plot per channel
     y_data = final_data_tp[i]

@@ -315,6 +315,9 @@ final_data_tp = np.transpose(final_data)
 # Plotting final data
 x_data = np.array(v_gen_freq)
 for i in range(len(final_data_tp)):
+    # Print Channel
+    print('-----------------------------')
+    print('Channel ', i+1)
 
     # Create y data to plot per channel
     y_data = final_data_tp[i]
