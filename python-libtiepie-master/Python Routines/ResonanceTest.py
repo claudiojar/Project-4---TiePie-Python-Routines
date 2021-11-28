@@ -328,7 +328,7 @@ for i in range(len(final_data_tp)):
     print('Resonance Frequency : ', resonance_frequency)
 
     # We arbitrarily detect a noise only signal
-    # We have to do this in order to avoind the FWHM function breaking when trying to compute the FWHM for a noise only signal.
+    # We have to do this in order to avoind the FWHM function breaking when trying to compute the FWHM for a noise-only signal.
     # This is kind of a hack
     if my_max-my_min < 1e-3:
         continue
@@ -347,12 +347,19 @@ for i in range(len(final_data_tp)):
     # a convincing plot
     half = max(y_data)/2.0
 
+    # Information to put in the resulting plot
     legend = 'Channel '+str(i+1)
     caption = f'Resonance frequency : {resonance_frequency/1000:.2f} kHz | Q Factor : {q_factor:.2f}'
 
+    # Do not use the savefigure bool in GenericPlot because it will only save the generic plot itself and not the FWHM line because they are plotted independently
     miraex_plt.GenericPlot(
         x_data, y_data, 'Frequency', 'RMS', name, legend, x_log=True, is_caption=True, my_caption=caption)
+    # Create the FWHM line
     plt.plot(hmx, [half, half])
+
+    save_file = miraex_misc.CreateFileName(FileName='My_Name_', FileType='jpg')
+
+    plt.savefig(save_file, dpi='figure')
 
 
 # Keep the ShowPlots command at the end of the script !!!!!!

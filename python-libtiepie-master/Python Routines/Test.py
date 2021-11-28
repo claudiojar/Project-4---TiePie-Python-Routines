@@ -9,11 +9,17 @@ Miraex - Endurance Test for piezoelectric shaker
 from __future__ import print_function
 
 import numpy as np
+import os
+from datetime import datetime
+
+from numpy.lib.npyio import save
+
 import MiraexLib.plot as miraex_plt
+import MiraexLib.misc as miraex_misc
 import MiraexLib.analysis as miraex_anls
 import matplotlib.pyplot as plt
 
-my_dir = "H:\\My Drive\\EPFL\\2. Master\\MA3 - 2021\\Semester Project - Miraex\\Project 4 - TiePie Python Routines\\exports\\raw-data\\"
+my_dir = "C:\\Users\\Claudio\\Documents\\GitHub\\Project-4---TiePie-Python-Routines\\exports\\raw-data\\"
 name = "FrequencySweepTest1__ResonanceTest__11-24-2021_@_09-42-15.txt"
 my_file = my_dir+name
 
@@ -70,11 +76,19 @@ for i in range(len(final_data_tp)):
     legend = 'Channel '+str(i+1)
     caption = f'Resonance frequency : {resonance_frequency/1000:.2f} kHz | Q Factor : {q_factor:.2f}'
 
+    # Do not use the savefigure bool in GenericPlot because it will only save the generic plot itself and not the FWHM line because they are plotted independently
     miraex_plt.GenericPlot(
         x_data, y_data, 'Frequency', 'RMS', name, legend, x_log=True, is_caption=True, my_caption=caption)
+    # Create the FWHM line
     plt.plot(hmx, [half, half])
 
+    save_file = miraex_misc.CreateFileName(FileName='My_Name_', FileType='jpg')
+
+    plt.savefig(save_file, dpi='figure')
+
+
+# Final clean-up
+result_file.close()
 
 # Keep the ShowPlots command at the end of the script !!!!!!
 miraex_plt.ShowPlots()
-result_file.close()

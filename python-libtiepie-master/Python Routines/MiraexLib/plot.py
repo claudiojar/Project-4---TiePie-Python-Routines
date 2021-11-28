@@ -48,6 +48,9 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
     ax_total.set_xlabel(xlabel)
     ax_total.set_ylabel(ylabel)
 
+    # set size of figure to a A4 paper
+    fig_total.set_size_inches(11.7, 8.3, forward=True)
+
     if x_log:
         plt.xscale('log')
 
@@ -57,7 +60,7 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
 
         # Careful here ! The 'exports' dir is manually set depending on the repo structure.
         # It would be useful to create some sort of JSON file giving the path required.
-        save_dir = save_path+'\\exports\\'
+        save_dir = save_path+'\\exports\\figures\\'
 
         # datetime object containing current date and time
         now = datetime.now()
@@ -72,7 +75,7 @@ def GenericPlot(xData: list, yData: list, xlabel: str, ylabel: str, title: str, 
         print(save_file)
 
         # Saving the file
-        fig_total.savefig(save_file)
+        fig_total.savefig(save_file, dpi='figure')
 
     if is_caption:
         fig_total.text(.5, .02, my_caption, ha='center')

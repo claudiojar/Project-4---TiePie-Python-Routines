@@ -37,15 +37,21 @@ def getParent(path, levels=1):
     return os.path.relpath(path, common)
 
 
-def CreateFileName(ParentName: str, FileType='txt'):
-    # File will be named with date in the name
+def CreateFileName(FileName: str, FileType: str, ParentName=str(os.getcwd())):
+    # Careful here ! The 'exports' dir is manually set depending on the repo structure.
+    # It would be useful to create some sort of JSON file giving the path required.
+    save_dir = ParentName+'\\exports\\figures\\'
+
+    # datetime object containing current date and time
     now = datetime.datetime.now()
-    current_time_str = now.strftime("%m-%d-%Y_@_%H-%M-%S")
+    # dd-mm-YY_H-M-S
+    dt_string = now.strftime("%d-%m-%Y_%H-%M-%S")
 
-    # Complete file name
-    file_name = ParentName+'__'+current_time_str+'.'+FileType
+    # creation of save path and stuff
+    save_name = FileName+'__'+dt_string+'.'+FileType
+    save_file = save_dir+save_name
 
-    return file_name
+    return save_file
 
 
 def CreateWriteDir(DataType: str):
@@ -72,7 +78,7 @@ def CreateWriteDir(DataType: str):
 
 
 def OpenFileDialog():
-    
+
     root = tk.Tk()
     root.withdraw()
     file_path = filedialog.askopenfilename()
