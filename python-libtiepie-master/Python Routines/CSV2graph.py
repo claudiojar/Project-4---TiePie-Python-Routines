@@ -13,10 +13,13 @@ import MiraexLib.misc as miraex_misc
 from MiraexLib.printinfo import*
 
 import csv
+import pandas
 
 
 # %% Settings
 name = '12KferruleH70e'
 selected_file = miraex_misc.OpenFileDialog()
 
-print(selected_file)
+with open(selected_file, 'r') as csv_file:
+
+    print(selected_file)
