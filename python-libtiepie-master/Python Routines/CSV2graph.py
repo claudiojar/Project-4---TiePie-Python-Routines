@@ -47,6 +47,7 @@ nb_x_ticks = 5
 nb_x_ticks += 1
 
 for nn, ax in enumerate(ax):
+
     # actual lines plotted
     ax.plot(xData, yData[nn], '-')
 
@@ -57,7 +58,7 @@ for nn, ax in enumerate(ax):
     ax.xaxis.set_ticks(np.arange(start, end, (end-start)/nb_x_ticks))
     ax.set_ylabel('RMS Voltage')
 
-
+my_fig.set_size_inches(20, 9, forward=True)
 ax.set_xlabel(my_xlabel)
 my_fig.supxlabel(my_global_title, fontsize=20)
 plt.show()
