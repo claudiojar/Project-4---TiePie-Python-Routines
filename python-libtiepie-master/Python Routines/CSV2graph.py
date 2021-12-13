@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 name = '12KferruleH70e'
 selected_file = miraex_misc.OpenFileDialog()
 
-# We have to specify the header list names, because in the CSV file generated the actual coplumn names are commented out with the # character.
+# We have to specify the header list names, because in the CSV file generated the actual column names are commented out with the # character.
 # Ideally we would create a CSV file where the header name line is NOT a comment, thus remove the initial # char
 header_list = ['timestamp', 'rms ch1', 'std ch1',
                'rms ch2', 'std ch2', 'sled power', 'sled power std']
