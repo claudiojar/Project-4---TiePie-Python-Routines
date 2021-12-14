@@ -23,12 +23,23 @@ from cubini.KPZ101 import KPZ101
 """
 IMPORTANT DOCUMENTATION :
 
+This script depends on the Cubini library : https://github.com/Schlabonski/cubini
+
+To install follow the steps in the READ ME of the repo. If the line :
+    - python3 setup.py install
+fails try using :
+    - python setup.py install
+
 For this script to work properly, the libraries :
  - PyUSB
  - LibUSB
 Need to be installed.
 
-Install them both first using : pip install [library] from the anaconda cmd line after having activated the relevant environment. Environment Miraex_2021_12_01 is the earliest to have this dependency installed.
+Install them both first using :
+    -  conda install -c conda-forge pyusb
+    -  conda install -c conda-forge libusb
+
+from the anaconda cmd line after having activated the relevant environment. Environment Miraex_2021_12_01 is the earliest to have this dependency installed.
 
 Then, go to : https://github.com/libusb/libusb/releases/tag/v1.0.24
 Download the zip file, and open it.
@@ -57,7 +68,7 @@ global h
 # %% Initialization
 
 # list of serial numbers
-cuboids = [81837345, 29250837]
+cuboids = [29250837]
 
 # connect to all modules
 cubinis = []
