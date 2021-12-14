@@ -156,7 +156,10 @@ libtiepie.device_list.update()
 # %% Parameter set before code
 
 Vvolt = []  # Volt vector
-Vch = []  # Channel signal vector
+
+average_list = []
+Vect_AmpRMS = []
+data_no_offset = []
 
 # Set acquire
 samplerate = 1
@@ -275,7 +278,46 @@ for ii in range(1, 1, 1):  # start, stop, step
 
                 # Get data:
                 data = scp.get_data()
+                np_data = np.array(data)  # numpy array
+                #print(f'{np_data.shape = }')
 
+                # average value of the data fetched during 1 loop per channel
+                # The first index is the iteration index
+                # The second index is the avg for channel index
+                average_list.append([np.mean(np_data[i])
+                                    for i in range(len(np_data))])
+
+                # Substract the mean of np_data to each element of np_data during 1 loop
+                '''
+                Processed data will have n number of elements, each has nb_of_channels sub-dimensions that represent the nb of channels that we are working with in the oscilloscope.
+
+                The number of elements n is the number of iterations of the loop. It increases as the test time increases.
+                '''
+                # By substracting the mean we remove the DC offset for each channel
+                data_no_offset.append([np_data[i] - average_list[i]
+                                      for i in range(len(np_data))])
+
+                del np_data
+
+                # Get all channel data value ranges (which are compensated for probe gain/offset)
+                data_range_min_max = []
+                for channel in scp.channels:
+                    data_range_min_max.append(
+                        [channel._get_data_value_min(), channel._get_data_value_max()])
+
+                # Creation of lists to plot
+                # RMS of the data fetched in 1 loop iteration, for each channel
+                AmpRMS = [np.sqrt(np.mean((np.array(data_no_offset[i]))**2))
+                          for i in range(len(data_no_offset))]
+
+                # Create a vector with all the RMS values of all loops, updates each loop
+                Vect_AmpRMS.append(AmpRMS)
+                Vect_AmpRMS_np = np.array(Vect_AmpRMS)
+
+                # Create a Channel first array of RMS values for plotting and better addressing of the data
+                Channel_AmpRMS = np.transpose(Vect_AmpRMS_np)
+
+                '''
                 # Output CSV data:
                 csv_file = open('OscilloscopeGeneratorTrigger.csv', 'w')
                 try:
@@ -292,8 +334,12 @@ for ii in range(1, 1, 1):  # start, stop, step
                     print()
                     print('Data written to: ' + csv_file.name)
 
+
                 finally:
                     csv_file.close()
+
+                '''
+
             except Exception as e:
                 print('Exception: ' + e.message)
                 sys.exit(1)
@@ -306,9 +352,11 @@ for ii in range(1, 1, 1):  # start, stop, step
 
         else:
             print('No oscilloscope available with block measurement support or generator available in the same unit!')
-            sys.exit(1)
 
-        sys.exit(0)
+        for i in range(len(average_list)):
+            miraex_plt.DynamicPlot2(Vvolt, average_list[i],
+                                    'Duration [s]', 'RMS', 'Test')
+
 
 # Reset cuboids to default parameters
 for kpz in cubinis:
