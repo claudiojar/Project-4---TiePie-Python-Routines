@@ -144,3 +144,27 @@ libtiepie.network.auto_detect_enabled = True
 
 # Search for devices:
 libtiepie.device_list.update()
+
+# %% Parameter set before code
+
+Vvolt = []  # Volt vector
+Vch = []  # Channel signal vector
+
+# Set acquire
+samplerate = 1
+bufferdelay = 0.1
+df = (1.25*10**6)
+
+dt = 1/df
+
+iitotal = 20
+
+# %% Main loop
+
+for ii in range(1, 1, 1):
+    trigger = 0
+    voltstop = 0
+    hystTest = np.arange(3, 65, 1)
+
+    for tt in hystTest:
+        print('hello world')

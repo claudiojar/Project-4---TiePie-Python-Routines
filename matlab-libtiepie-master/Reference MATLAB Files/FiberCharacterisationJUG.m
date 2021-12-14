@@ -30,7 +30,7 @@ h = actxcontrol('MG17SYSTEM.MG17SystemCtrl.1', [20 20 600 400 ], f);
 %% Initialize
 % Start Control
 % Set the Serial Number
-SN = 81837345; % put in the serial number of the hardware
+SN = 29250837; % put in the serial number of the hardware
 h_Piezo = actxcontrol('MGPIEZO.MGPiezoCtrl.1', [20 20 600 400 ], f);
 
 h_Piezo.StartCtrl;
