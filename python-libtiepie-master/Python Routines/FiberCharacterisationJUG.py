@@ -73,6 +73,8 @@ into
     C:\windows\SysWOW64.
 
 This should solve the ''No backend available'' exepction raised at init of the cuboids.
+
+Warning : use the set_max_voltage method before the set_output_voltage method to avoid crashes.
 """
 
 # %% Parameters
@@ -110,6 +112,8 @@ for sn in cuboids:
         print(e)
         print('KPZ101 {} not found.'.format(sn))
 """
+
+"""
 # sequentially run a test sequence for each cube
 for kpz in cubinis:
     kpz.set_max_voltage(150)
@@ -121,6 +125,14 @@ for kpz in cubinis:
         time.sleep(0.1)
     kpz.set_output_voltage(0)
     kpz.disable_output()
+"""
+
+# set initial parameters sequentially
+for kpz in cubinis:
+    kpz.set_max_voltage(150)
+    kpz.enable_output()
+    kpz.set_output_voltage(20)
+
 
 # %% TiePie initialization
 

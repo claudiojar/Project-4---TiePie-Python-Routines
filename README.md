@@ -68,3 +68,10 @@ into
 
 This should solve the ''No backend available'' exepction raised at init of the cuboids.
 
+## Known problems
+### Fiber Characterisation
+
+* Known problem in the `KPZ101.py` script : the `__del__(self)` method calls for `#self.com.disconnect()` which calls `self.device.attach_kernel_driver(0)` in `vcp_terminal.py` which calls `self._ctx.backend.attach_kernel_driver()` in `core.py`. The `attach_kernel_driver()` method is not implemented in the `core.py` and raises a `Not_Implemented` exception when called.\
+This bug could be solved by updating the `core.py` build to a newer build in which the method is implemented. But we have not found a way to try and test this.
+
+* If we set a given output voltage before setting the maximum voltage the script can potentially crash.
