@@ -23,28 +23,54 @@ from cubini.KPZ101 import KPZ101
 """
 IMPORTANT DOCUMENTATION :
 
-This script depends on the Cubini library : https://github.com/Schlabonski/cubini
+This script depends on the [Cubini library](https://github.com/Schlabonski/cubini).
 
-To install follow the steps in the READ ME of the repo. If the line :
-    - python3 setup.py install
-fails try using :
-    - python setup.py install
+To install follow the steps in the READ ME of the repo.
+
+If the line :
+
+    python3 setup.py install
+
+fails, try using :
+
+    python setup.py install
 
 For this script to work properly, the libraries :
  - PyUSB
  - LibUSB
+
 Need to be installed.
 
-Install them both first using :
-    -  conda install -c conda-forge pyusb
-    -  conda install -c conda-forge libusb
+Install them both first by using :
 
-from the anaconda cmd line after having activated the relevant environment. Environment Miraex_2021_12_01 is the earliest to have this dependency installed.
+    conda install -c conda-forge pyusb
+    conda install -c conda-forge libusb
+
+from the anaconda cmd line after having activated the relevant environment.
+
+> Environment Miraex_2021_12_01 is the earliest to have this dependency installed.
 
 Then, go to : https://github.com/libusb/libusb/releases/tag/v1.0.24
+
 Download the zip file, and open it.
+
 Unzip using 7zip into a temp dir.
-If on 64-bit Windows, copy MinGW64\dll\libusb-1.0.dll into C:\windows\system32. If on 32-bit windows, copy MinGW32\dll\libusb-1.0.dll into C:\windows\SysWOW64.
+
+If on 64-bit Windows, copy
+
+    MinGW64\dll\libusb-1.0.dll
+
+into
+
+    C:\windows\system32
+
+If on 32-bit windows, copy
+
+    MinGW32\dll\libusb-1.0.dll
+
+into
+
+    C:\windows\SysWOW64.
 
 This should solve the ''No backend available'' exepction raised at init of the cuboids.
 """
