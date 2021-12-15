@@ -2,23 +2,46 @@
 ### Python and MATLAB routines used for interfacing with a TiePie oscilloscope/arbitrary function generator
 
 ---
+- [MIRAEX Project 4 : TiePie Python Routines](#miraex-project-4--tiepie-python-routines)
+    - [Python and MATLAB routines used for interfacing with a TiePie oscilloscope/arbitrary function generator](#python-and-matlab-routines-used-for-interfacing-with-a-tiepie-oscilloscopearbitrary-function-generator)
+  - [Checklist before usage :](#checklist-before-usage-)
+  - [Special dependencies](#special-dependencies)
+    - [All scripts](#all-scripts)
+      - [Installation](#installation)
+    - [Fiber Characterisation script](#fiber-characterisation-script)
+      - [Installation](#installation-1)
+  - [Known problems](#known-problems)
+    - [Fiber Characterisation](#fiber-characterisation)
+
+---
 
 ## Checklist before usage :
 
- * Import and activate the latest conda environment found under : `\env`
+ * If possible, import and activate the latest conda environment found under : `\env`
+ * **IMPORTANT** : Activate the environment and launch VS Code or your preferred IDE from the activated environment !\
+ This can be done either by using the anaconda navigator after the environment has been activated or by issuing the command `code` to launch VS Code from Anaconda Prompt or Anaconda Powershell Prompt with an activated environment.
 
  * To execute the Python scripts navigate to : `\python-libtiepie-master\Python Routines`
  * To view the equivalent MATLAB routines navigate to : `\matlab-libtiepie-master\Reference MATLAB Files`
 
+
+
 ## Special dependencies
 
 ### All scripts
-All scripts depend on the `libtiepie` SDK provided for free at : [LibTiePie](https://www.tiepie.com/en/libtiepie-sdk). Before using the LibTiePie SDK it is required to install the drivers found at : https://www.tiepie.com/en/download
+All scripts depend on the `libtiepie` SDK provided for free at : [LibTiePie](https://www.tiepie.com/en/libtiepie-sdk).
+
+#### Installation
+
+Before using the LibTiePie SDK it is required to install the drivers found at : https://www.tiepie.com/en/download
+
+After installing the drivers follow the Python installation found [here](https://www.tiepie.com/en/libtiepie-sdk/python).
 
 ### Fiber Characterisation script
 
 This script depends on the [Cubini library](https://github.com/Schlabonski/cubini).
 
+#### Installation
 To install follow the steps in the READ ME of the repo.
 
 If the line :
@@ -35,12 +58,13 @@ For this script to work properly, the libraries :
 
 Need to be installed.
 
-Install them both first by using :
+From an activated environment, install them both first by using :
 
-    conda install -c conda-forge pyusb
     conda install -c conda-forge libusb
+    conda install -c conda-forge pyusb
 
-from the anaconda cmd line after having activated the relevant environment.
+
+IN THIS ORDER from the anaconda cmd line after having activated the relevant environment.
 
 > Environment Miraex_2021_12_01 is the earliest to have this dependency installed.
 
