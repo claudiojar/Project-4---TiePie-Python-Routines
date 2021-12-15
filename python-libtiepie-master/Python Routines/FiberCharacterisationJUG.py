@@ -19,7 +19,6 @@ import MiraexLib.plot as miraex_plt
 import MiraexLib.misc as miraex_misc
 import MiraexLib.analysis as miraex_anls
 from MiraexLib.printinfo import*
-
 from cubini.KPZ101 import KPZ101
 
 """
@@ -103,7 +102,7 @@ global h
 # %% Initialization
 
 # list of serial numbers
-cuboids = [29250837]
+cuboids = [81837345]
 
 # connect to all modules
 cubinis = []
@@ -112,7 +111,9 @@ print('here')
 
 for sn in cuboids:
     # try:
+    print('in for')
     cubini = KPZ101(serial_number=sn)
+    print(' in for 2 ')
     time.sleep(0.1)
     cubini.set_input_mode()
     cubinis.append(cubini)
@@ -143,6 +144,7 @@ for kpz in cubinis:
     kpz.set_max_voltage(V_max)
     kpz.enable_output()
     kpz.set_output_voltage(V_default)
+    kpz.disable_output()
 
 
 # %% TiePie initialization
