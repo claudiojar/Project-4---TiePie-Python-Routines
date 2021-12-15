@@ -107,6 +107,9 @@ cuboids = [29250837]
 
 # connect to all modules
 cubinis = []
+
+print('here')
+
 for sn in cuboids:
     # try:
     cubini = KPZ101(serial_number=sn)
