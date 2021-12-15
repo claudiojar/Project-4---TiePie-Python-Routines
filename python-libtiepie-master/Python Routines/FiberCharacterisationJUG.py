@@ -337,7 +337,6 @@ for ii in range(1, 1, 1):  # start, stop, step
 
                 finally:
                     csv_file.close()
-
                 '''
 
             except Exception as e:
