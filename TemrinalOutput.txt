@@ -1,0 +1,336 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS H:\My Drive\EPFL\2. Master\MA3 - 2021\Semester Project - Miraex\Project 4 - TiePie Python Routines> conda activate Miraex_2021_12_15
+PS H:\My Drive\EPFL\2. Master\MA3 - 2021\Semester Project - Miraex\Project 4 - TiePie Python Routines> & C:/Users/claud/anaconda3/envs/Miraex_2021_12_15/python.exe "h:/My Drive/EPFL/2. Master/MA3 - 2021/Semester Project - Miraex/Project 4 - TiePie Python Routines/python-libtiepie-master/Python Routines/FiberCharacterisationJUG.py"
+init
+devs :  <generator object find.<locals>.device_iter at 0x00000227449A8BA0>
+kpz None
+try
+<class 'usb.core.Device'>
+serial 3
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 771
+wIndex 3
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle None
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [18, 3, 50, 0, 57, 0, 50, 0, 53, 0, 48, 0, 56, 0, 51, 0, 55, 0])
+<class 'str'>
+if
+in if
+dev here in control.py
+bmRequestType 128
+wValue 768
+wIndex 0
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [4, 3, 9, 4])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 769
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [18, 3, 84, 0, 104, 0, 111, 0, 114, 0, 108, 0, 97, 0, 98, 0, 115, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 770
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [50, 3, 75, 0, 105, 0, 110, 0, 101, 0, 115, 0, 105, 0, 115, 0, 32, 0, 80, 0, 105, 0, 101, 0, 122, 0, 111, 0, 32, 0, 67, 0, 111, 0, 110, 0,
+116, 0, 114, 0, 111, 0, 108, 0, 108, 0, 101, 0, 114, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 771
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [18, 3, 50, 0, 57, 0, 50, 0, 53, 0, 48, 0, 56, 0, 51, 0, 55, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 770
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [50, 3, 75, 0, 105, 0, 110, 0, 101, 0, 115, 0, 105, 0, 115, 0, 32, 0, 80, 0, 105, 0, 101, 0, 122, 0, 111, 0, 32, 0, 67, 0, 111, 0, 110, 0,
+116, 0, 114, 0, 111, 0, 108, 0, 108, 0, 101, 0, 114, 0])
+DEVICE ID 0403:faf0 on Bus 002 Address 002 =================
+ bLength                :   0x12 (18 bytes)
+ bDescriptorType        :    0x1 Device
+ bcdUSB                 :  0x200 USB 2.0
+ bDeviceClass           :    0x0 Specified at interface
+ bDeviceSubClass        :    0x0
+ bDeviceProtocol        :    0x0
+ bMaxPacketSize0        :    0x8 (8 bytes)
+ idVendor               : 0x0403
+ idProduct              : 0xfaf0
+ bcdDevice              : 0x1000 Device 16.0
+ iManufacturer          :    0x1 Thorlabs
+ iProduct               :    0x2 Kinesis Piezo Controller
+ iSerialNumber          :    0x3 29250837
+ bNumConfigurations     :    0x1
+  CONFIGURATION 1: 0 mA ====================================
+   bLength              :    0x9 (9 bytes)
+   bDescriptorType      :    0x2 Configuration
+   wTotalLength         :   0x20 (32 bytes)
+   bNumInterfaces       :    0x1
+   bConfigurationValue  :    0x1
+   iConfiguration       :    0x0
+   bmAttributes         :   0xc0 Self Powered
+   bMaxPower            :    0x0 (0 mA)
+    INTERFACE 0: Vendor Specific ===========================
+     bLength            :    0x9 (9 bytes)
+     bDescriptorType    :    0x4 Interface
+     bInterfaceNumber   :    0x0
+     bAlternateSetting  :    0x0
+     bNumEndpoints      :    0x2
+     bInterfaceClass    :   0xff Vendor Specific
+     bInterfaceSubClass :   0xff
+     bInterfaceProtocol :   0xff
+     iInterface         :    0x2 Kinesis Piezo Controller
+      ENDPOINT 0x81: Bulk IN ===============================
+       bLength          :    0x7 (7 bytes)
+       bDescriptorType  :    0x5 Endpoint
+       bEndpointAddress :   0x81 IN
+       bmAttributes     :    0x2 Bulk
+       wMaxPacketSize   :   0x40 (64 bytes)
+       bInterval        :    0x0
+      ENDPOINT 0x2: Bulk OUT ===============================
+       bLength          :    0x7 (7 bytes)
+       bDescriptorType  :    0x5 Endpoint
+       bEndpointAddress :    0x2 OUT
+       bmAttributes     :    0x2 Bulk
+       wMaxPacketSize   :   0x40 (64 bytes)
+       bInterval        :    0x0
+kpz: here in util.py
+here in control.py
+bmRequestType 128
+wValue 769
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [18, 3, 84, 0, 104, 0, 111, 0, 114, 0, 108, 0, 97, 0, 98, 0, 115, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 770
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [50, 3, 75, 0, 105, 0, 110, 0, 101, 0, 115, 0, 105, 0, 115, 0, 32, 0, 80, 0, 105, 0, 101, 0, 122, 0, 111, 0, 32, 0, 67, 0, 111, 0, 110, 0,
+116, 0, 114, 0, 111, 0, 108, 0, 108, 0, 101, 0, 114, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 771
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [18, 3, 50, 0, 57, 0, 50, 0, 53, 0, 48, 0, 56, 0, 51, 0, 55, 0])
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 770
+wIndex 1033
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 4
+array('B', [50, 3, 75, 0, 105, 0, 110, 0, 101, 0, 115, 0, 105, 0, 115, 0, 32, 0, 80, 0, 105, 0, 101, 0, 122, 0, 111, 0, 32, 0, 67, 0, 111, 0, 110, 0,
+116, 0, 114, 0, 111, 0, 108, 0, 108, 0, 101, 0, 114, 0])
+DEVICE ID 0403:faf0 on Bus 002 Address 002 =================
+ bLength                :   0x12 (18 bytes)
+ bDescriptorType        :    0x1 Device
+ bcdUSB                 :  0x200 USB 2.0
+ bDeviceClass           :    0x0 Specified at interface
+ bDeviceSubClass        :    0x0
+ bDeviceProtocol        :    0x0
+ bMaxPacketSize0        :    0x8 (8 bytes)
+ idVendor               : 0x0403
+ idProduct              : 0xfaf0
+ bcdDevice              : 0x1000 Device 16.0
+ iManufacturer          :    0x1 Thorlabs
+ iProduct               :    0x2 Kinesis Piezo Controller
+ iSerialNumber          :    0x3 29250837
+ bNumConfigurations     :    0x1
+  CONFIGURATION 1: 0 mA ====================================
+   bLength              :    0x9 (9 bytes)
+   bDescriptorType      :    0x2 Configuration
+   wTotalLength         :   0x20 (32 bytes)
+   bNumInterfaces       :    0x1
+   bConfigurationValue  :    0x1
+   iConfiguration       :    0x0
+   bmAttributes         :   0xc0 Self Powered
+   bMaxPower            :    0x0 (0 mA)
+    INTERFACE 0: Vendor Specific ===========================
+     bLength            :    0x9 (9 bytes)
+     bDescriptorType    :    0x4 Interface
+     bInterfaceNumber   :    0x0
+     bAlternateSetting  :    0x0
+     bNumEndpoints      :    0x2
+     bInterfaceClass    :   0xff Vendor Specific
+     bInterfaceSubClass :   0xff
+     bInterfaceProtocol :   0xff
+     iInterface         :    0x2 Kinesis Piezo Controller
+      ENDPOINT 0x81: Bulk IN ===============================
+       bLength          :    0x7 (7 bytes)
+       bDescriptorType  :    0x5 Endpoint
+       bEndpointAddress :   0x81 IN
+       bmAttributes     :    0x2 Bulk
+       wMaxPacketSize   :   0x40 (64 bytes)
+       bInterval        :    0x0
+      ENDPOINT 0x2: Bulk OUT ===============================
+       bLength          :    0x7 (7 bytes)
+       bDescriptorType  :    0x5 Endpoint
+       bEndpointAddress :    0x2 OUT
+       bmAttributes     :    0x2 Bulk
+       wMaxPacketSize   :   0x40 (64 bytes)
+       bInterval        :    0x0
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py try
+here in managed_open
+buff array('B')
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 3
+here in core.py try
+buff array('B')
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in core.py 0
+here in core.py 2
+here in core.py 3
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+DM-0001-DC1_on_top
+here
+in for
+init
+devs :  <generator object find.<locals>.device_iter at 0x00000227449A8BA0>
+kpz None
+try
+<class 'usb.core.Device'>
+serial 3
+here in util.py
+here in control.py
+bmRequestType 128
+wValue 771
+wIndex 3
+desc_size 254
+here in core.py try
+buff array('B', [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+here in managed_open
+self.handle None
+except in KPZ101
+Traceback (most recent call last):
+  File "h:/My Drive/EPFL/2. Master/MA3 - 2021/Semester Project - Miraex/Project 4 - TiePie Python Routines/python-libtiepie-master/Python Routines/FiberCharacterisationJUG.py", line 116, in <module>
+here in managed_open
+self.handle <usb.backend.libusb1._DeviceHandle object at 0x00000227449D9C70>
+    myCube = cb.KPZ101(serial_number=sn)
+  File "C:\Users\claud\anaconda3\envs\Miraex_2021_12_15\lib\site-packages\cubini\KPZ101.py", line 45, in __init__
+    assert kpz is not None, 'No KPZ101 with matching serial number {} found!'.format(
+AssertionError: No KPZ101 with matching serial number 29250837 found!
+Modified code here
+PS H:\My Drive\EPFL\2. Master\MA3 - 2021\Semester Project - Miraex\Project 4 - TiePie Python Routines> ^C
+PS H:\My Drive\EPFL\2. Master\MA3 - 2021\Semester Project - Miraex\Project 4 - TiePie Python Routines>

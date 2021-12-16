@@ -19,8 +19,8 @@ import MiraexLib.plot as miraex_plt
 import MiraexLib.misc as miraex_misc
 import MiraexLib.analysis as miraex_anls
 from MiraexLib.printinfo import*
-from cubini.KPZ101 import KPZ101
-
+#from cubini.KPZ101 import KPZ101
+import cubini.KPZ101 as cb
 """
 IMPORTANT DOCUMENTATION :
 
@@ -81,6 +81,7 @@ Warning : use the set_max_voltage method before the set_output_voltage method to
 # %% Generic parameters
 
 name = 'DM-0001-DC1_on_top '
+print(name)
 
 # %% Cuboid parameters
 
@@ -102,7 +103,7 @@ global h
 # %% Initialization
 
 # list of serial numbers
-cuboids = [81837345]
+cuboids = [29250837]
 
 # connect to all modules
 cubinis = []
@@ -112,11 +113,11 @@ print('here')
 for sn in cuboids:
     # try:
     print('in for')
-    cubini = KPZ101(serial_number=sn)
+    myCube = cb.KPZ101(serial_number=sn)
     print(' in for 2 ')
     time.sleep(0.1)
-    cubini.set_input_mode()
-    cubinis.append(cubini)
+    myCube.set_input_mode()
+    cubinis.append(myCube)
     print('KPZ101 {} found.'.format(sn))
 
 """
