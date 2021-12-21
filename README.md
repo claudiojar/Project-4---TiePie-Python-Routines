@@ -29,11 +29,15 @@
 ## Special dependencies
 
 ### All scripts
-All scripts depend on the `libtiepie` SDK provided for free at : [LibTiePie](https://www.tiepie.com/en/libtiepie-sdk).
+All scripts depend on the `libtiepie` SDK provided for free at : [LibTiePie SDK](https://www.tiepie.com/en/libtiepie-sdk).
 
 #### Installation
 
-Before using the LibTiePie SDK it is required to install the drivers found at : https://www.tiepie.com/en/download
+Before using the LibTiePie SDK it is required to install the drivers found [here](https://www.tiepie.com/en/download).
+
+**For Linux**, follow the installation instructions available [here](https://www.tiepie.com/en/download/linux#source-ubuntu).
+
+We recommend using the package available [here](https://www.tiepie.com/en/download/linux#source-ubuntu) rather than manually installing.
 
 After installing the drivers follow the Python installation found [here](https://www.tiepie.com/en/libtiepie-sdk/python).
 
