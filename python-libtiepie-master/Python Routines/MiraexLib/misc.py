@@ -37,10 +37,15 @@ def getParent(path, levels=1):
     return os.path.relpath(path, common)
 
 
-def CreateFileName(FileName: str, FileType: str, ParentName=str(os.getcwd())):
+def CreateFileName(FileName: str, FileType: str):
     # Careful here ! The 'exports' dir is manually set depending on the repo structure.
     # It would be useful to create some sort of JSON file giving the path required.
-    save_dir = ParentName+'\\exports\\figures\\'
+
+    file_type_raw = ['txt', 'csv', 'json']
+    file_type_fig = ['jpg', 'jpeg', 'png']
+
+    if FileType not in (file_type_raw+file_type_fig):
+        assert('INVALID FILE TYPE (try removing a dot)')
 
     # datetime object containing current date and time
     now = datetime.datetime.now()
@@ -49,7 +54,7 @@ def CreateFileName(FileName: str, FileType: str, ParentName=str(os.getcwd())):
 
     # creation of save path and stuff
     save_name = FileName+'__'+dt_string+'.'+FileType
-    save_file = save_dir+save_name
+    save_file = save_name
 
     return save_file
 
@@ -59,8 +64,7 @@ def CreateWriteDir(DataType: str):
     allowed_types = ['raw', 'figure']
 
     if DataType not in allowed_types:
-        print('ERROR : DataType must be "raw" or "figure".')
-        sys.exit(0)
+        assert('ERROR : DataType must be "raw" or "figure".')
 
     # Write directory within the repo
     if DataType == 'raw':
@@ -70,9 +74,7 @@ def CreateWriteDir(DataType: str):
 
     # Get repo path
     myPath = os.getcwd()
-    print(myPath)
     writeDir = myPath + writeDir_in_repo
-    print(f'{writeDir = } ')
 
     return writeDir
 

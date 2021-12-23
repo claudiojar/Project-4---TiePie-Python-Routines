@@ -59,7 +59,10 @@ ampRange = 4  # oscilloscope amplitude in V
 # Create file_name
 name = 'EnduranceTest'
 file_name = miraex_misc.CreateFileName(name, 'txt')
+print(file_name)
 writeDir_func = miraex_misc.CreateWriteDir('raw')
+print(writeDir_func)
+
 
 # Open the text file to write the results
 result_file = open(writeDir_func+file_name, "ab")
