@@ -2,7 +2,7 @@
 ### Python and MATLAB routines used for interfacing with a TiePie oscilloscope/arbitrary function generator
 
 ---
-- [MIRAEX Project 4 : TiePie Python Routines](#miraex-project-4--tiepie-python-routines)
+- [MIRAEX Project 4 : Miraex Python Routines](#miraex-project-4--miraex-python-routines)
     - [Python and MATLAB routines used for interfacing with a TiePie oscilloscope/arbitrary function generator](#python-and-matlab-routines-used-for-interfacing-with-a-tiepie-oscilloscopearbitrary-function-generator)
   - [Checklist before usage :](#checklist-before-usage-)
   - [Special dependencies](#special-dependencies)
